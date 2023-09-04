@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 360356bdf47cc7c44a239a3f05b71d1a, type: 3}
+  m_Name: SkinsConfig
+  m_EditorClassIdentifier: 
+  _skins:
+  - SkinId: 1
+    _skinImage: {fileID: 21300000, guid: 2afc83fd807c4e342bbf2cf08876c347, type: 3}
+    SkinModelPrefab: {fileID: 2215956422950428280, guid: 1b1fb4b1813321443b94fe1cc0be1db4, type: 3}
+  - SkinId: 2
+    _skinImage: {fileID: 21300000, guid: 2afc83fd807c4e342bbf2cf08876c347, type: 3}
+    SkinModelPrefab: {fileID: 8644550507207864615, guid: 3c9c00f970950df478136f0f9fbd7208, type: 3}
+  - SkinId: 3
+    _skinImage: {fileID: 21300000, guid: 2afc83fd807c4e342bbf2cf08876c347, type: 3}
+    SkinModelPrefab: {fileID: 8503130997687849043, guid: 4bb82071e7208f941a93fe7abc334330, type: 3}
+  - SkinId: 4
+    _skinImage: {fileID: 21300000, guid: 2afc83fd807c4e342bbf2cf08876c347, type: 3}
+    SkinModelPrefab: {fileID: 7147384194721386188, guid: 5641a2e4f453e2240aefcf1feede4e20, type: 3}
+  - SkinId: 5
+    _skinImage: {fileID: 21300000, guid: 2afc83fd807c4e342bbf2cf08876c347, type: 3}
+    SkinModelPrefab: {fileID: 5732752596948459547, guid: b81ab38d8d51a29429c24b6abe44313c, type: 3}
+  - SkinId: 6
+    _skinImage: {fileID: 21300000, guid: 2afc83fd807c4e342bbf2cf08876c347, type: 3}
+    SkinModelPrefab: {fileID: 7596225010513009447, guid: 3848d70015d046042bfd9af23c238758, type: 3}
+  - SkinId: 7
+    _skinImage: {fileID: 21300000, guid: 2afc83fd807c4e342bbf2cf08876c347, type: 3}
+    SkinModelPrefab: {fileID: 3575287293402784935, guid: f7996f04986487c42b6294bb7c84ee5f, type: 3}
+  - SkinId: 8
+    _skinImage: {fileID: 21300000, guid: 2afc83fd807c4e342bbf2cf08876c347, type: 3}
+    SkinModelPrefab: {fileID: 2096052541432634609, guid: 29af38ac633ac5e4c8b7390a84bdf761, type: 3}
+  - SkinId: 9
+    _skinImage: {fileID: 21300000, guid: 2afc83fd807c4e342bbf2cf08876c347, type: 3}
+    SkinModelPrefab: {fileID: 2938155377683637912, guid: 9c5c8a16a3c3c304c8982215ed92c6bf, type: 3}
+  - SkinId: 10
+    _skinImage: {fileID: 21300000, guid: 2afc83fd807c4e342bbf2cf08876c347, type: 3}
+    SkinModelPrefab: {fileID: 3873355455974113795, guid: 462ca5499eb1b254d8b128dcc99e9652, type: 3}
+  - SkinId: 11
+    _skinImage: {fileID: 21300000, guid: 2afc83fd807c4e342bbf2cf08876c347, type: 3}
+    SkinModelPrefab: {fileID: 1583171971341531111, guid: 243616b96d6f0c54b805257a886f0620, type: 3}
+  - SkinId: 12
+    _skinImage: {fileID: 21300000, guid: 2afc83fd807c4e342bbf2cf08876c347, type: 3}
+    SkinModelPrefab: {fileID: 7407324277389625081, guid: e965dce57ddd1bd4daa5b1d138a79936, type: 3}
