@@ -1,0 +1,27 @@
+{
+    "idSave": 5973,
+    "isFirstSession": false,
+    "language": "ru",
+    "promptDone": false,
+    "money": 3,
+    "newPlayerName": "Hello!",
+    "openLevels": [
+        false,
+        true,
+        false
+    ],
+    "isExited": 1,
+    "PlayerPosX": 8.199999809265137,
+    "PlayerPosY": 0.3328598141670227,
+    "PlayerPosZ": -1.5,
+    "CheckpointsTrackerBarScaleX": 0.0,
+    "time": 0,
+    "isBuyed": [
+        2,
+        2,
+        3,
+        3,
+        1,
+        1
+    ]
+}

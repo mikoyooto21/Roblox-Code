@@ -1,44 +1,100 @@
 using System.Collections;
-using System.Collections.Generic;
+using YG;
 using UnityEngine;
 using TMPro;
-using UnityEditor;
-using System;
 using UnityEngine.UI;
+using DG.Tweening;
+using UnityEngine.SceneManagement;
+using System;
 
-public class UI_InGame : MonoBehaviour
+public class UI_InGame : Coins
 {
+
+    // Подписываемся на событие GetDataEvent в OnEnable
+    private void OnEnable() => YandexGame.GetDataEvent += LoadData;
+
+    private void OnDisable() => YandexGame.GetDataEvent -= LoadData;
+
+
     public float simpleTimer = 0f;
-    public float countdownTimeValue = 90;
     public static bool gamePaused = false;
 
-
     [Header("References")]
+    public GameObject ad;
+    public GameObject coins;
     public GameObject inGameUI;
     public GameObject onPauseMenu;
-
-    public TMP_Text countdownTimerText;
+    public GameObject menuButtonPC;
+    public GameObject menuButtonMobile;
+    [SerializeField] private GameObject Won;
+    [SerializeField] private GameObject End;
     public TMP_Text timerText;
+    public TMP_Text adTimerText;
     public Image checkpointsTrackerBar;
-    public Button menuButton;
-    public Button resumeButton;
+    public GameObject details;
+    public GameObject player;
+    RectTransform rectTransform;
+    Vector2 newSize;
 
-    int lastLvl = 1;
+    float playerPosX;
+    float playerPosY;
+    float playerPosZ;
+
+    bool switched = false;
+
+    int lastLvl = 149;
+
+    public float adTimer = 10f;
+
+    void Start()
+    {
+        rectTransform = checkpointsTrackerBar.rectTransform;
+        if (YandexGame.SDKEnabled == true)
+        {
+            // Если запустился, то выполняем Ваш метод для загрузки
+            if(YandexGame.savesData.isExited == 1)
+                LoadData();
+
+            // Если плагин еще не прогрузился, то метод не выполнится в методе Start,
+            // но он запустится при вызове события GetDataEvent, после прогрузки плагина
+        }
+
+
+        MobileMenuButtonMaker();
+        LoadCheckpointTracker();
+        if (PlayerPrefs.HasKey("PlayerExited"))
+        {
+            if (PlayerPrefs.GetInt("PlayerExited") == 1)
+            {
+                if (PlayerPrefs.HasKey("PlayerPosX") && PlayerPrefs.HasKey("PlayerPosY") && PlayerPrefs.HasKey("PlayerPosZ"))
+                {
+                    playerPosX = PlayerPrefs.GetFloat("PlayerPosX");
+                    playerPosY = PlayerPrefs.GetFloat("PlayerPosY");
+                    playerPosZ = PlayerPrefs.GetFloat("PlayerPosZ");
+
+                    Vector3 playerPosition = new Vector3(playerPosX, playerPosY, playerPosZ);
+                    player.transform.position = playerPosition;
+                    
+                }
+            }
+        }
+        coinsCollected = PlayerPrefs.GetInt("Coins");
+    }
 
     // Update is called once per frame
     void Update()
     {
-        if (countdownTimeValue > 0)
-            countdownTimeValue -= Time.deltaTime;
-        else
-            countdownTimeValue = 0f;
-
-        simpleTimer += Time.deltaTime;
-
-        DisplayCountdownTime(countdownTimeValue);
-        DisplayTime(simpleTimer);
+        VideoAdNew();
         CheckpointsTracker();
 
+        if (!gamePaused)
+        {
+            if (SceneManager.GetActiveScene().buildIndex == 2)
+                simpleTimer += Time.deltaTime;
+            adTimer -= Time.deltaTime;
+        }
+
+        DisplayTime();
         if (Input.GetKeyDown("tab") && !gamePaused)
         {
             Debug.Log("PAUSED");
@@ -51,57 +107,207 @@ public class UI_InGame : MonoBehaviour
         }
     }
 
-    void DisplayCountdownTime(float timeToDisplay)
+    void MobileMenuButtonMaker()
     {
-        if (timeToDisplay < 0)
-            timeToDisplay = 0;
+        if (YandexGame.EnvironmentData.isMobile)
+        {
+            menuButtonPC.SetActive(false);
+            menuButtonMobile.SetActive(true);
+        }
+    }
+    void LoadCheckpointTracker()
+    {
+        if (PlayerPrefs.HasKey("PlayerExited"))
+        {
+            if (PlayerPrefs.GetInt("PlayerExited") == 1)
+            {
+                if (PlayerPrefs.HasKey("CheckpointsTrackerBarScaleX") && !switched)
+                {
+                    newSize.x = PlayerPrefs.GetFloat("CheckpointsTrackerBarScaleX");
+                    switched = true;
 
-        float minutes = Mathf.FloorToInt(timeToDisplay / 60);
-        float seconds = Mathf.FloorToInt(timeToDisplay % 60);
-
-        countdownTimerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+                    // Оновіть розмір checkpointsTrackerBar
+                    rectTransform.sizeDelta += newSize;
+                }
+            }
+        }
     }
 
-    void DisplayTime(float timeToDisplay)
+
+    void DisplayTime()
     {
 
-        float minutes = Mathf.FloorToInt(timeToDisplay / 60);
-        float seconds = Mathf.FloorToInt(timeToDisplay % 60);
+        float minutes = Mathf.FloorToInt(simpleTimer / 60);
+        float seconds = Mathf.FloorToInt(simpleTimer % 60);
 
         timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+        if (SceneManager.GetActiveScene().buildIndex == 2)
+        {
+            PlayerPrefs.SetString("LastTime", string.Format("{0:00}:{1:00}", minutes, seconds));
+            PlayerPrefs.Save();
+        }
     }
 
-    void CheckpointsTracker()
+    public void CheckpointsTracker()
     {
-        if (lastLvl < PlayerMovement.passedLvls)
+        if (lastLvl==PlayerMovement.passedLvls)
         {
-            RectTransform rectTransform = checkpointsTrackerBar.rectTransform;
-            Vector2 newSize = rectTransform.sizeDelta;
-            newSize.x += 2.32f;
-            rectTransform.sizeDelta = newSize;
 
-            lastLvl += 1;
+            newSize = rectTransform.sizeDelta;
+            newSize.x += 2.25f;
+            rectTransform.sizeDelta = newSize;
+            CollectCoin();
+            lastLvl--;
         }
     }
 
     public void GamePause()
     {
+        gamePaused = true;
+        PlayerPrefs.SetInt("PlayerExited", 1);
+        YandexGame.savesData.isExited = 1;
+        YandexGame.SaveProgress();
+        RemoveDetails();
         Time.timeScale = 0;
+        gamePaused = true;
         inGameUI.SetActive(false);
         onPauseMenu.SetActive(true);
-        gamePaused = true;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+
+        Debug.Log("Paused");
     }
 
     public void GameResume()
     {
+        gamePaused = false;
+        RemoveDetails();
+        PlayerPrefs.SetInt("PlayerExited", 0);
+        PlayerPrefs.Save();
+        YandexGame.savesData.isExited = 0;
+        YandexGame.SaveProgress();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         inGameUI.SetActive(true);
         onPauseMenu.SetActive(false);
         Time.timeScale = 1;
-        gamePaused = false;
         Debug.Log("Ressumed");
+    }
+
+    public void MapComplete()
+    {
+        gamePaused = true;
+        Debug.Log("WIN");
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        if (SceneManager.GetActiveScene().buildIndex == 1)
+        {
+            PlayerPrefs.SetInt("UnlockedLevelWithTimer", 1); // 1 - рівень розблоковано
+        }
+        YandexGame.savesData.isExited = 0;
+        YandexGame.SaveProgress();
+        PlayerPrefs.SetInt("PlayerExited", 0);
+        PlayerPrefs.Save();
+        Won.SetActive(true);
+    }
+
+    public void MenuButton()
+    {
+        gamePaused = false;
+        SaveCoins();
+        SaveProgress();
+        DOTween.Clear();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - SceneManager.GetActiveScene().buildIndex);
+    }
+
+
+
+    public void SaveProgress()
+    {
+        if (SceneManager.GetActiveScene().buildIndex == 1)
+        {
+            PlayerPrefs.SetFloat("PlayerPosX", player.transform.position.x);
+            YandexGame.savesData.PlayerPosX = player.transform.position.x;
+            PlayerPrefs.SetFloat("PlayerPosY", player.transform.position.y);
+            YandexGame.savesData.PlayerPosY = player.transform.position.y;
+            PlayerPrefs.SetFloat("PlayerPosZ", player.transform.position.z);
+            YandexGame.savesData.PlayerPosZ = player.transform.position.z;
+            PlayerPrefs.SetFloat("CheckpointsTrackerBarScaleX", newSize.x); // Оновлення розміру без арифметичних операцій
+            YandexGame.savesData.CheckpointsTrackerBarScaleX = newSize.x;
+
+            PlayerPrefs.SetInt("Checkpoint", 1);
+        }
+        if(SceneManager.GetActiveScene().buildIndex == 2)
+        {
+            if (PlayerPrefs.HasKey("time"))
+            {
+                if(PlayerPrefs.GetInt("time") < simpleTimer)
+                    PlayerPrefs.SetInt("time", Mathf.RoundToInt(simpleTimer));
+            }
+            else
+                PlayerPrefs.SetInt("time", Mathf.RoundToInt(simpleTimer));
+            PlayerPrefs.Save();
+            if ((YandexGame.savesData.time < simpleTimer) && YandexGame.savesData.time > 0)
+                YandexGame.savesData.time = Mathf.RoundToInt(simpleTimer);
+        }
+        PlayerPrefs.SetInt("Coins", coinsCollected);
+        YandexGame.savesData.money = coinsCollected;
+        PlayerPrefs.Save();
+        YandexGame.SaveProgress();
+    }
+
+    public void LoadData()
+    {
+        coinText.text = YandexGame.savesData.money.ToString();
+        if (YandexGame.savesData.isExited == 1)
+        {
+            playerPosX = YandexGame.savesData.PlayerPosX;
+            playerPosY = YandexGame.savesData.PlayerPosY;
+            playerPosZ = YandexGame.savesData.PlayerPosZ;
+
+            Vector3 playerPosition = new Vector3(playerPosX, playerPosY, playerPosZ);
+            player.transform.position = playerPosition;
+            coinsCollected = YandexGame.savesData.money;
+            if (!switched)
+            {
+                newSize.x = YandexGame.savesData.CheckpointsTrackerBarScaleX;
+                switched = true;
+
+                // Оновіть розмір checkpointsTrackerBar
+                rectTransform.sizeDelta += newSize;
+            }
+        }
+    }
+
+    public void RemoveDetails()
+    {
+        if(gamePaused)
+            details.SetActive(false);
+        else details.SetActive(true);
+    }
+
+    public void VideoAdNew()
+    {
+        if (adTimer < 1)
+        {
+            VideoOpen();
+        }
+        if(adTimer < 5 )
+        {
+            ad.SetActive(true);
+            adTimerText.text = string.Format("{0:0}...", adTimer);
+        }
+        else
+            ad.SetActive(false);
+    }
+
+    public void VideoOpen()
+    {
+        YandexGame.FullscreenShow();
+    }
+    public void VideoClose()
+    {
+        adTimer = 330;
+        GamePause();
     }
 }

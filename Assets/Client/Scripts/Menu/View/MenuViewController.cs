@@ -22,6 +22,10 @@ public class MenuViewController : MonoBehaviour
 
     private void Awake()
     {
+        Time.timeScale = 1;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
         if (Instance == null)
             Instance = this;
 

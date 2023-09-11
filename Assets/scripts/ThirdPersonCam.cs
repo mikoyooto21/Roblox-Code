@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using YG;
 
 public class ThirdPersonCam : MonoBehaviour
 {
@@ -9,6 +10,9 @@ public class ThirdPersonCam : MonoBehaviour
     public Transform player;
     public Transform playerObj;
     public Rigidbody rb;
+    [SerializeField] Joystick joystick;
+
+    public PlayerMovement playerMovement;
 
     public float rotationSpeed;
 
@@ -32,9 +36,11 @@ public class ThirdPersonCam : MonoBehaviour
 
     private void Update()
     {
+        playerObj = player.GetChild(4);
+
         // switch styles
-        if (Input.GetKeyDown(KeyCode.B)) SwitchCameraStyle(CameraStyle.Basic);
-        if (Input.GetKeyDown(KeyCode.C)) SwitchCameraStyle(CameraStyle.Combat);
+        if (YandexGame.EnvironmentData.isDesktop) SwitchCameraStyle(CameraStyle.Basic);
+        if (YandexGame.EnvironmentData.isMobile) SwitchCameraStyle(CameraStyle.Combat);
 
         // rotate orientation
         Vector3 viewDir = player.position - new Vector3(transform.position.x, player.position.y, transform.position.z);
@@ -53,10 +59,16 @@ public class ThirdPersonCam : MonoBehaviour
 
         else if (currentStyle == CameraStyle.Combat)
         {
-            Vector3 dirToCombatLookAt = combatLookAt.position - new Vector3(transform.position.x, combatLookAt.position.y, transform.position.z);
-            orientation.forward = dirToCombatLookAt.normalized;
+            float horizontalInput = joystick.Horizontal;
+            float verticalInput = joystick.Vertical;
+            Vector3 inputDir = orientation.forward * verticalInput + orientation.right * horizontalInput;
 
-            playerObj.forward = dirToCombatLookAt.normalized;
+            if (inputDir != Vector3.zero)
+            {
+                playerObj.forward = Vector3.Slerp(playerObj.forward, inputDir.normalized, Time.deltaTime * rotationSpeed);
+                // Оновіть орієнтацію камери, щоб вона дивилася в тому ж напрямку, що і персонаж.
+                orientation.forward = playerObj.forward;
+            }
         }
     }
 

@@ -15,6 +15,16 @@ TagManager:
   - MoveMeAndHotCubes
   - Up
   - Down
+  - OnMusic
+  - OffMusic
+  - OnSound
+  - OffSound
+  - Complete
+  - Audio
+  - musicOn
+  - musicOff
+  - sfxOn
+  - sfxOff
   layers:
   - Default
   - TransparentFX

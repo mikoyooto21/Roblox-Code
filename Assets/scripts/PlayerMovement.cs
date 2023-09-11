@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UIElements;
 using Unity.VisualScripting;
+using YG;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -52,23 +53,27 @@ public class PlayerMovement : MonoBehaviour
 
     static public int passedLvls = 0;
 
-    static public int checkpoints;
+    static public GameObject[] checkpoints;
     static public List<GameObject> checkpointsList = new List<GameObject>();
 
     [Header("Additional")]
+    private UI_InGame inGame;
     public Transform orientation;
-    [SerializeField] GameObject character;
-
+    [SerializeField] Joystick joystick;
+    [SerializeField] MusicManager sfx;
     float horizontalInput;
     float verticalInput;
     public float startTimeInAir = 0f;
     public float endTimeInAir = 7f;
+
+    public bool ControllPc = true;
 
     public Animator animator;
     Vector3 moveDirection;
 
     Rigidbody rb;
 
+    static public int win = 0;
     public MovementState state;
     public enum MovementState
     {
@@ -81,9 +86,12 @@ public class PlayerMovement : MonoBehaviour
 
     public bool idle = true;
     public bool walking = false;
+    int skinId = 1;
+
 
     private void Start()
     {
+        inGame = FindObjectOfType<UI_InGame>();
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
         rb.useGravity = true;
@@ -95,16 +103,26 @@ public class PlayerMovement : MonoBehaviour
         startYScale = transform.localScale.y;
 
         vectorPoint = transform.position;
-        checkpoints = GameObject.FindGameObjectsWithTag("Checkpoint").Length;
-        foreach (GameObject chekpointGameObject in GameObject.FindGameObjectsWithTag("Checkpoint"))
+        checkpoints = GameObject.FindGameObjectsWithTag("Checkpoint");
+
+        checkpointsList.Clear();
+        foreach (GameObject chekpointGameObject in checkpoints)
         {
-            checkpointsList.Add(chekpointGameObject);
+                checkpointsList.Add(chekpointGameObject);
         }
+
+        SetSkin();
+
+        transform.GetChild(4).localScale += new Vector3(0.2f, 0.2f, 0.2f);
+        transform.GetChild(4).position += new Vector3(0f, 0.7f, 0f);
     }
+
+
 
     private void Update()
     {
-        
+        if (YandexGame.EnvironmentData.isMobile)
+            ControllPc = false;
 
         if (transform.position.y < vectorPoint.y - dead && !grounded && startTimeInAir >= endTimeInAir)
         {
@@ -119,29 +137,69 @@ public class PlayerMovement : MonoBehaviour
         // ground check
         grounded = Physics.CheckSphere(groundCheck.position, groundDistance, whatIsGround);
 
-        MyInput();
+        if (checkpointsList.Count != 0)
+            MyInput();
         SpeedControl();
 
         // handle drag
         if (grounded)
-        { 
-            rb.drag = groundDrag; 
-            startTimeInAir = 0f; 
+        {
+            rb.drag = groundDrag;
+            startTimeInAir = 0f;
         }
         else
-        { 
-            rb.drag = 0; 
+        {
+            rb.drag = 0;
+        }
+    }
+
+    private void SetSkin()
+    {
+        if (PlayerPrefs.HasKey("PlayerSkinId"))
+            skinId = PlayerPrefs.GetInt("PlayerSkinId");
+        SkinsConfig skinConfig = GameDataManager.Instance.SkinsConfig;
+
+        for (int i = 0; i < skinConfig.Skins.Count; i++)
+        {
+            if (skinConfig.Skins[i].SkinId == skinId)
+            {
+                Debug.Log(skinId);
+                transform.GetChild(0).gameObject.SetActive(false);
+
+                Animator modelAnimator = Instantiate(skinConfig.Skins[i].SkinModelPrefab, transform);
+                animator = modelAnimator;
+                break;
+            }
         }
     }
 
     private void FixedUpdate()
     {
-        
-        horizontalInput = Input.GetAxisRaw("Horizontal");
-        verticalInput = Input.GetAxisRaw("Vertical");
+        if (ControllPc)
+        {
+            horizontalInput = Input.GetAxisRaw("Horizontal");
+            verticalInput = Input.GetAxisRaw("Vertical");
+        }
+        else
+        {
+            horizontalInput = joystick.Horizontal;
+            verticalInput = joystick.Vertical;
+        }
 
         MovePlayer();
         StateHandler();
+    }
+
+    public void ButtonJump()
+    {
+        if (readyToJump && grounded)
+        {
+            readyToJump = false;
+
+            Jump();
+
+            Invoke(nameof(ResetJump), jumpCooldown);
+        }
     }
 
     private void MyInput()
@@ -240,18 +298,21 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // on ground
-        if (grounded)
-            rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
+        if (grounded && !Input.GetKey(jumpKey))
+        {
+            rb.velocity = new Vector3(moveDirection.normalized.x * moveSpeed, rb.velocity.y, moveDirection.normalized.z * moveSpeed);
+        }
 
         // in air
         else if (!grounded && state == MovementState.air)
-            rb.AddForce(moveDirection.normalized * moveSpeed/2f * 10f * airMultiplier, ForceMode.Force);
-// 
-
+        {
+            rb.AddForce(moveDirection.normalized * moveSpeed / 2f * 10f * airMultiplier, ForceMode.Force);
+        }
 
         // turn gravity off while on slope
         rb.useGravity = !OnSlope();
     }
+
 
     private void SpeedControl()
     {
@@ -278,14 +339,16 @@ public class PlayerMovement : MonoBehaviour
 
     public void Jump()
     {
+        moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
         animator.SetTrigger("Jump");
 
         exitingSlope = true;
-        rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+        rb.velocity = new Vector3(moveDirection.normalized.x * 6, 0f, moveDirection.normalized.z * 6); // Скинути вертикальну компоненту швидкості
 
         rb.AddForce(transform.up * jumpForce, ForceMode.Force);
         startTimeInAir = 0;
     }
+
     private void ResetJump()
     {
         readyToJump = true;
@@ -311,7 +374,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnCollisionEnter(Collision collision)
     {
-        
+
         if (collision.gameObject.CompareTag("Down"))
         {
             endTimeInAir = 0.65f;
@@ -335,15 +398,20 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collider.CompareTag("Checkpoint"))
         {
-                vectorPoint = collider.transform.position;
-                checkpointsList.Remove(collider.gameObject);
-                passedLvls = checkpoints - checkpointsList.Count;
-                Debug.Log(passedLvls);
+            vectorPoint = collider.transform.position;
+            checkpointsList.Remove(collider.gameObject);
+            passedLvls = checkpointsList.Count;
+            Debug.Log(passedLvls);
+        }
+        if (collider.CompareTag("Complete"))
+        {
+            inGame.MapComplete();
         }
     }
 
     void Dead()
     {
-        transform.position = vectorPoint + Vector3.up*3;
+        transform.position = vectorPoint + Vector3.up * 3;
+        sfx.PlaySFX(sfx.death);
     }
 }
