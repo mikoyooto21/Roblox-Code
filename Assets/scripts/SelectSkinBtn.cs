@@ -12,6 +12,8 @@ public class SelectSkinBtn : MonoBehaviour
     private Transform _selectSkinParent;
     private BuySellWatch _buySellWatch;
     [SerializeField] private AllSkinsPanel _allSkinsPanel;
+
+    public GameObject border;
     private void OnEnable() => YandexGame.GetDataEvent += LoadSkinData;
 
     // Отписываемся от события GetDataEvent в OnDisable
@@ -21,9 +23,19 @@ public class SelectSkinBtn : MonoBehaviour
 
     public List<int> isBuyedData = new List<int>();
 
-    public void Start()
+    private void Start()
     {
+        
+    }
 
+    public void Update()
+    {
+        
+        if (PlayerPrefs.GetInt("LastSelected") == _skinData.SkinId)
+            border.SetActive(true);
+        else
+            border.SetActive(false);
+        
     }
 
     public void LoadSkinData()
@@ -52,11 +64,10 @@ public class SelectSkinBtn : MonoBehaviour
         if (_selectSkinParent.childCount > 0)
             Destroy(_selectSkinParent.GetChild(0).gameObject);
 
+        Instantiate(_skinData.SkinModelPrefab, _selectSkinParent);
         PlayerPrefs.SetInt("LastSelected", _skinData.SkinId);
         Debug.Log(PlayerPrefs.GetInt("OwnedSkin" + _skinData.SkinId));
 
-
-        Instantiate(_skinData.SkinModelPrefab, _selectSkinParent);
 
         if (_skinData != null && !_skinData.skinAvailable && _skinData.skinPrice > 0 && PlayerPrefs.GetInt("OwnedSkin" + _skinData.SkinId) == 0)
         {
@@ -73,4 +84,10 @@ public class SelectSkinBtn : MonoBehaviour
             _buySellWatch.UpdateSkinData(_skinData);
         }
     }
+
+
+
+    
+
+
 }

@@ -1,9 +1,11 @@
-using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine;
 
 public class CameraRotationMobile : MonoBehaviour, IDragHandler
 {
     public Transform cameraTransform;
+    public Transform orientation;
+
     public float xSpeed = 220.0f;
     public float ySpeed = 100.0f;
     public float yMinLimit = -20f;
@@ -26,8 +28,8 @@ public class CameraRotationMobile : MonoBehaviour, IDragHandler
 
         y = ClampAngle(y, yMinLimit, yMaxLimit);
 
-        Quaternion rotation = Quaternion.Euler(y, x, 0);
-        cameraTransform.rotation = rotation;
+        Quaternion cameraRotation = Quaternion.Euler(y, x, 0);
+        cameraTransform.rotation = cameraRotation;
     }
 
     private float ClampAngle(float angle, float min, float max)

@@ -11,6 +11,8 @@ public class BuySellWatch : ShopButtonsManager
     private List<SkinData> skinDatas;
     public AllSkinsPanel allSkinsPanel;
     public SkinData _skinData;
+
+    [SerializeField] private GameObject playerParent;
     private int coinsCollected = 0; // Грошовий баланс гравця
 
 
@@ -23,11 +25,13 @@ public class BuySellWatch : ShopButtonsManager
 
     private void Start()
     {
+        
         skinDatas = new List<SkinData>();
         // При запуску гри завантажте грошовий баланс гравця збережену в PlayerPrefs (якщо вона є)
         if (PlayerPrefs.HasKey("Coins"))
         {
             coinsCollected = PlayerPrefs.GetInt("Coins");
+
         }
 
         // Оновіть відображення кількості монеток на початку гри
@@ -37,6 +41,8 @@ public class BuySellWatch : ShopButtonsManager
     private void Update()
     {
         UpdateCoinText();
+        if (_skinData.SkinId == PlayerPrefs.GetInt("PlayerSkinId"))
+            HideButton();
     }
 
     public void UpdateSkinData(SkinData newSkinData)
@@ -47,8 +53,8 @@ public class BuySellWatch : ShopButtonsManager
     public void Own()
     {
         PlayerPrefs.SetInt("PlayerSkinId", PlayerPrefs.GetInt("LastSelected"));
-
-        Debug.Log("Skin selected");
+        Debug.Log("Skin selected " + PlayerPrefs.GetInt("LastSelected") + " " + _skinData.SkinId);
+        HideButton();
     }
 
     public void Buy()
@@ -70,12 +76,13 @@ public class BuySellWatch : ShopButtonsManager
             // Оновити відображення кількості монеток
             UpdateCoinText();
             SaveCoins();
-            DisplayOwnButton();
+            HideButton();
         }
         else
         {
             // Повідомте гравця про недостатню кількість монеток для покупки
             Debug.Log("Недостатньо монеток для покупки цього скіна.");
+            
         }
     }
 
@@ -84,9 +91,9 @@ public class BuySellWatch : ShopButtonsManager
         // Код для перегляду відео та отримання скіна
         // Ось приклад:
         
-            YandexGame.savesData.isBuyed.Add(_skinData.SkinId);
-            YandexGame.SaveProgress();
-            DisplayOwnButton();
+        YandexGame.savesData.isBuyed.Add(_skinData.SkinId);
+        YandexGame.SaveProgress();
+        HideButton();
     }
 
     private void UpdateCoinText()
@@ -116,5 +123,36 @@ public class BuySellWatch : ShopButtonsManager
         YandexGame.savesData.money = coinsCollected;
         PlayerPrefs.Save();
         YandexGame.SaveProgress();
+    }
+
+    public void closeIf()
+    {
+        if(PlayerPrefs.GetInt("OwnedSkin" + PlayerPrefs.GetInt("LastSelected"))!=1 || !YandexGame.savesData.isBuyed.Contains(_skinData.SkinId))
+        {
+            playerParent.SetActive(true);
+            SkinsConfig skinConfig = MenuDataManager.Instance.SkinsConfig;
+            SetSkin(skinConfig.Skins[PlayerPrefs.GetInt("PlayerSkinId") - 1]);
+            PlayerPrefs.SetInt("LastSelected", 0);
+        }
+
+        if (PlayerPrefs.GetInt("OwnedSkin" + PlayerPrefs.GetInt("LastSelected")) == 1 || YandexGame.savesData.isBuyed.Contains(_skinData.SkinId) || _skinData.skinAvailable)
+        {
+            playerParent.SetActive(true);
+            PlayerPrefs.SetInt("LastSelected", 0);
+        }
+    }
+
+    public void SetSkin(SkinData skinData)
+    {
+
+        _skinData = skinData;
+
+        if (_skinData == null)
+            return;
+
+        if (playerParent.transform.childCount > 0)
+            Destroy(playerParent.transform.GetChild(0).gameObject);
+
+        Instantiate(_skinData.SkinModelPrefab, playerParent.transform);
     }
 }

@@ -1,13 +1,15 @@
 using UnityEngine;
 using TMPro;
+using YG;
 
 public class AllSkinsPanel : ShopButtonsManager
 {
+    [SerializeField] private SelectSkinBtn _selectSkinBtn;
     [SerializeField] private SelectSkinBtn[] _selectSkinBtns;
     [SerializeField] private Transform _selectSkinParent;
     [SerializeField] private BuySellWatch _buySellWatch;
     public TextMeshProUGUI coinText; // Посилання на TextMeshPro для відображення кількості монеток
-
+    [SerializeField] private GameObject playerImg;
 
     private void OnEnable()
     {
@@ -42,13 +44,9 @@ public class AllSkinsPanel : ShopButtonsManager
         }
         else
         {
+            HideButton();
             Debug.Log("");
         }
-    }
-
-    public void NotActive()
-    {
-        _selectSkinParent.gameObject.SetActive(false);
     }
 
     public void IsActive()

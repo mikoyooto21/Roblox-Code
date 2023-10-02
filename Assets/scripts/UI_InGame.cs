@@ -26,6 +26,7 @@ public class UI_InGame : Coins
     public GameObject onPauseMenu;
     public GameObject menuButtonPC;
     public GameObject menuButtonMobile;
+    [SerializeField] private GameObject MobileControl;
     [SerializeField] private GameObject Won;
     [SerializeField] private GameObject End;
     public TMP_Text timerText;
@@ -49,19 +50,7 @@ public class UI_InGame : Coins
     void Start()
     {
         rectTransform = checkpointsTrackerBar.rectTransform;
-        if (YandexGame.SDKEnabled == true)
-        {
-            // Если запустился, то выполняем Ваш метод для загрузки
-            if(YandexGame.savesData.isExited == 1)
-                LoadData();
 
-            // Если плагин еще не прогрузился, то метод не выполнится в методе Start,
-            // но он запустится при вызове события GetDataEvent, после прогрузки плагина
-        }
-
-
-        MobileMenuButtonMaker();
-        LoadCheckpointTracker();
         if (PlayerPrefs.HasKey("PlayerExited"))
         {
             if (PlayerPrefs.GetInt("PlayerExited") == 1)
@@ -74,16 +63,33 @@ public class UI_InGame : Coins
 
                     Vector3 playerPosition = new Vector3(playerPosX, playerPosY, playerPosZ);
                     player.transform.position = playerPosition;
-                    
+                    Debug.Log("Ui_InGame script " + player.transform.position);
                 }
             }
         }
+
+        if (YandexGame.SDKEnabled == true)
+        {
+            // Если запустился, то выполняем Ваш метод для загрузки
+            if (YandexGame.savesData.isExited == 1)
+                LoadData();
+
+            // Если плагин еще не прогрузился, то метод не выполнится в методе Start,
+            // но он запустится при вызове события GetDataEvent, после прогрузки плагина
+        }
+        Debug.Log("IsExit " + PlayerPrefs.GetInt("PlayerExited"));
+
+        MobileMenuButtonMaker();
+        LoadCheckpointTracker();
+        
         coinsCollected = PlayerPrefs.GetInt("Coins");
     }
 
     // Update is called once per frame
     void Update()
     {
+        
+        
         VideoAdNew();
         CheckpointsTracker();
 
@@ -114,6 +120,8 @@ public class UI_InGame : Coins
             menuButtonPC.SetActive(false);
             menuButtonMobile.SetActive(true);
         }
+        else if (YandexGame.EnvironmentData.isDesktop)
+            MobileControl.SetActive(false);
     }
     void LoadCheckpointTracker()
     {
@@ -150,7 +158,7 @@ public class UI_InGame : Coins
 
     public void CheckpointsTracker()
     {
-        if (lastLvl==PlayerMovement.passedLvls)
+        if (lastLvl == PlayerMovement.passedLvls)
         {
 
             newSize = rectTransform.sizeDelta;
@@ -224,24 +232,12 @@ public class UI_InGame : Coins
 
     public void SaveProgress()
     {
-        if (SceneManager.GetActiveScene().buildIndex == 1)
-        {
-            PlayerPrefs.SetFloat("PlayerPosX", player.transform.position.x);
-            YandexGame.savesData.PlayerPosX = player.transform.position.x;
-            PlayerPrefs.SetFloat("PlayerPosY", player.transform.position.y);
-            YandexGame.savesData.PlayerPosY = player.transform.position.y;
-            PlayerPrefs.SetFloat("PlayerPosZ", player.transform.position.z);
-            YandexGame.savesData.PlayerPosZ = player.transform.position.z;
-            PlayerPrefs.SetFloat("CheckpointsTrackerBarScaleX", newSize.x); // Оновлення розміру без арифметичних операцій
-            YandexGame.savesData.CheckpointsTrackerBarScaleX = newSize.x;
-
-            PlayerPrefs.SetInt("Checkpoint", 1);
-        }
-        if(SceneManager.GetActiveScene().buildIndex == 2)
+        
+        if (SceneManager.GetActiveScene().buildIndex == 2)
         {
             if (PlayerPrefs.HasKey("time"))
             {
-                if(PlayerPrefs.GetInt("time") < simpleTimer)
+                if (PlayerPrefs.GetInt("time") < simpleTimer)
                     PlayerPrefs.SetInt("time", Mathf.RoundToInt(simpleTimer));
             }
             else
@@ -281,7 +277,7 @@ public class UI_InGame : Coins
 
     public void RemoveDetails()
     {
-        if(gamePaused)
+        if (gamePaused)
             details.SetActive(false);
         else details.SetActive(true);
     }
@@ -292,7 +288,7 @@ public class UI_InGame : Coins
         {
             VideoOpen();
         }
-        if(adTimer < 5 )
+        if (adTimer < 5)
         {
             ad.SetActive(true);
             adTimerText.text = string.Format("{0:0}...", adTimer);
@@ -308,6 +304,5 @@ public class UI_InGame : Coins
     public void VideoClose()
     {
         adTimer = 330;
-        GamePause();
     }
 }

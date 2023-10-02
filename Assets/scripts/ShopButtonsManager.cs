@@ -28,4 +28,11 @@ public class ShopButtonsManager : MonoBehaviour
         selectButton.gameObject.SetActive(false);
         watchButton.gameObject.SetActive(true);
     }
+
+    public void HideButton()
+    {
+        buyButton.gameObject.SetActive(false);
+        selectButton.gameObject.SetActive(false);
+        watchButton.gameObject.SetActive(false);
+    }
 }

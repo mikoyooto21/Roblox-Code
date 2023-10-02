@@ -22,7 +22,21 @@ ModelImporter:
     removeConstantScaleCurves: 0
     motionNodeName: 
     animationImportErrors: 
-    animationImportWarnings: 
+    animationImportWarnings: "\nClip 'Armature|IdleFINAL' has import animation warnings
+      that might lower retargeting quality:\nNote: Activate translation DOF on avatar
+      to improve retargeting quality.\n\t'Chew' is inbetween humanoid transforms
+      and has rotation animation that will be discarded.\n\nClip 'Armature|JumpStart'
+      has import animation warnings that might lower retargeting quality:\nNote:
+      Activate translation DOF on avatar to improve retargeting quality.\n\t'Chew'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
+      'Armature|JumpEnd' has import animation warnings that might lower retargeting
+      quality:\nNote: Activate translation DOF on avatar to improve retargeting quality.\n\t'Chew'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'armL1'
+      has translation animation that will be discarded.\n\nClip 'ArmatureAction'
+      has import animation warnings that might lower retargeting quality:\nNote:
+      Activate translation DOF on avatar to improve retargeting quality.\n\t'Chew'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'armR2'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n"
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
@@ -50,7 +64,7 @@ ModelImporter:
     nodeNameCollisionStrategy: 1
     fileIdsGeneration: 2
     swapUVChannels: 0
-    generateSecondaryUV: 0
+    generateSecondaryUV: 1
     useFileUnits: 1
     keepQuads: 0
     weldVertices: 1
@@ -83,8 +97,365 @@ ModelImporter:
   importAnimation: 1
   humanDescription:
     serializedVersion: 3
-    human: []
-    skeleton: []
+    human:
+    - boneName: Spine4
+      humanName: Hips
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: LegR1
+      humanName: LeftUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: LegL1
+      humanName: RightUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: LegR2
+      humanName: LeftLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: LegL2
+      humanName: RightLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: LegIKR
+      humanName: LeftFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: LegIKL
+      humanName: RightFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Spine3
+      humanName: Spine
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Spine2
+      humanName: Chest
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Head_end
+      humanName: Head
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: shoulder2-2
+      humanName: LeftShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: shoulder1-2
+      humanName: RightShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: armR1
+      humanName: LeftUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: armL1
+      humanName: RightUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: armR3
+      humanName: LeftLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: armL2
+      humanName: RightLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: armR3_end
+      humanName: LeftHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: armL3
+      humanName: RightHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Spine1
+      humanName: UpperChest
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    skeleton:
+    - name: Jocker_Additional_Animation(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Armature
+      parentName: Jocker_Additional_Animation(Clone)
+      position: {x: -0, y: 1.8725218, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Spine4
+      parentName: Armature
+      position: {x: -0, y: -0.058068886, z: 0.017690182}
+      rotation: {x: 0.7071069, y: 0, z: 0, w: 0.7071067}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Spine3
+      parentName: Spine4
+      position: {x: -0, y: 0.2958396, z: 0.000000001632813}
+      rotation: {x: 5.346976e-10, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Spine2
+      parentName: Spine3
+      position: {x: -0, y: 0.24740726, z: 0.0000000019679476}
+      rotation: {x: -0.0000000038804018, y: 0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Spine1
+      parentName: Spine2
+      position: {x: -0, y: 0.35395864, z: -0.000000002917119}
+      rotation: {x: 0.0000000032050025, y: -0.00000011920929, z: -3.8206607e-16, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Chew
+      parentName: Spine1
+      position: {x: -5.4456426e-15, y: 0.43006948, z: -0.000000007939491}
+      rotation: {x: -0.11004519, y: 0.00000023697062, z: -5.7878257e-15, w: 0.9939266}
+      scale: {x: 1, y: 1.0000001, z: 1}
+    - name: Head
+      parentName: Chew
+      position: {x: 3.108597e-15, y: 0.13883357, z: -0.000000040978193}
+      rotation: {x: 0.11004519, y: 2.3212914e-14, z: 0.00000002623684, w: 0.9939266}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Head_end
+      parentName: Head
+      position: {x: -4.699635e-16, y: 0.14366199, z: 0.000000002131344}
+      rotation: {x: 0.00000001722033, y: -7.2795453e-22, z: 1.3300941e-15, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: shoulder1-2
+      parentName: Spine1
+      position: {x: 0.30916718, y: 0.38057566, z: -0.05806895}
+      rotation: {x: -0.00000012648744, y: 0.00000006973425, z: -0.81174284, w: 0.5840152}
+      scale: {x: 0.9999999, y: 0.99999994, z: 1}
+    - name: armL1
+      parentName: shoulder1-2
+      position: {x: -0.0000001192094, y: 0.30434716, z: 4.2632564e-14}
+      rotation: {x: -0.000000103576475, y: 0.0000002577913, z: 0.12707242, w: 0.99189353}
+      scale: {x: 0.99999976, y: 0.9999998, z: 1}
+    - name: armL2
+      parentName: armL1
+      position: {x: 0.0000005066393, y: 0.38488036, z: 2.2737368e-13}
+      rotation: {x: -0.000000011644962, y: -0.00000029074093, z: 0.0009029959, w: 0.9999996}
+      scale: {x: 1.0000001, y: 0.99999994, z: 1}
+    - name: armL3
+      parentName: armL2
+      position: {x: -0.00000029802322, y: 0.56556904, z: 2.1316282e-13}
+      rotation: {x: 0.000000052897903, y: 0.00000021629587, z: -0.0826549, w: 0.9965782}
+      scale: {x: 0.9999999, y: 1, z: 1}
+    - name: armL3_end
+      parentName: armL3
+      position: {x: 0.00000010430815, y: 0.58180755, z: 1.4210855e-14}
+      rotation: {x: -2.3925306e-14, y: -0.0000000728438, z: 0.00000008940695, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: shoulder2-2
+      parentName: Spine1
+      position: {x: -0.31511694, y: 0.39006066, z: -0.05806875}
+      rotation: {x: -0.0000006183992, y: 0.0000007549495, z: 0.8118008, w: 0.5839345}
+      scale: {x: 0.9999997, y: 0.9999999, z: 1}
+    - name: armR1
+      parentName: shoulder2-2
+      position: {x: -0.00000011921006, y: 0.31319827, z: -8.526513e-14}
+      rotation: {x: 0.00000019024996, y: -0.00000098273, z: -0.115544185, w: 0.99330235}
+      scale: {x: 0.99999994, y: 1, z: 1}
+    - name: armR2
+      parentName: armR1
+      position: {x: 0.00000002980247, y: 0.37005925, z: -5.684342e-14}
+      rotation: {x: -0.00000012356236, y: 0.00000036882875, z: -0.019323878, w: 0.99981326}
+      scale: {x: 1, y: 0.9999999, z: 1}
+    - name: armR3
+      parentName: armR2
+      position: {x: -0.00000005960486, y: 0.59353024, z: 1.1368684e-13}
+      rotation: {x: 0.0000000075678335, y: -0.0000008933886, z: 0.010940233, w: 0.99994016}
+      scale: {x: 0.9999999, y: 0.9999999, z: 1}
+    - name: armR3_end
+      parentName: armR3
+      position: {x: 0.00000008940748, y: 0.5888253, z: -1.1368684e-13}
+      rotation: {x: 1.6342482e-13, y: 0.00000031737278, z: 0.0000003129244, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: LegL1
+      parentName: Spine4
+      position: {x: 0.29628962, y: -0.20341742, z: 0.0064519807}
+      rotation: {x: 0.7070377, y: -0.00988983, z: 0.70703757, w: 0.009889832}
+      scale: {x: 1.0000001, y: 0.99999994, z: 0.9999999}
+    - name: LegL2
+      parentName: LegL1
+      position: {x: -0.0000000054519482, y: 0.8520675, z: -0.000000008221494}
+      rotation: {x: 0.010197597, y: -0.00050081173, z: 0.049011793, w: 0.99874604}
+      scale: {x: 0.99999994, y: 1.0000002, z: 1}
+    - name: LegL2.001
+      parentName: LegL2
+      position: {x: 0.000000029991213, y: 0.6589756, z: -0.000000013038292}
+      rotation: {x: 0.0020966914, y: -0.12342789, z: -0.04534021, w: 0.991315}
+      scale: {x: 1, y: 0.99999976, z: 0.99999976}
+    - name: LegIKL
+      parentName: LegL2.001
+      position: {x: -0.000000011292286, y: 0.14137457, z: -0.00000013614772}
+      rotation: {x: 0.70201534, y: 0.7014247, z: -0.085613824, w: -0.08858974}
+      scale: {x: 0.9999999, y: 0.99999964, z: 1.0000001}
+    - name: LegIKL_end
+      parentName: LegIKL
+      position: {x: -0.000000081490725, y: 0.25866812, z: -0.000000003255991}
+      rotation: {x: 0.000000006657642, y: -0.032278497, z: 0.00000023089055, w: 0.99947894}
+      scale: {x: 1, y: 1, z: 1}
+    - name: LegR1
+      parentName: Spine4
+      position: {x: -0.3010671, y: -0.20341778, z: 0.006452204}
+      rotation: {x: 0.7070072, y: 0.011871223, z: 0.7070071, w: -0.011871224}
+      scale: {x: 1.0000004, y: 1, z: 1}
+    - name: LegR2
+      parentName: LegR1
+      position: {x: -0.0000000076504065, y: 0.8522153, z: -0.000000002199231}
+      rotation: {x: -0.012996147, y: 0.0006375545, z: 0.04901026, w: 0.99871355}
+      scale: {x: 0.99999994, y: 1, z: 1}
+    - name: LegR2.001
+      parentName: LegR2
+      position: {x: 0.00000008758809, y: 0.6589759, z: 0.000000050291852}
+      rotation: {x: 0.014468981, y: 0.12082414, z: -0.043300327, w: 0.9916236}
+      scale: {x: 1, y: 1, z: 0.9999998}
+    - name: LegIKR
+      parentName: LegR2.001
+      position: {x: -0.000000006519258, y: 0.14141564, z: 0.000000039028237}
+      rotation: {x: 0.7012409, y: 0.70246375, z: 0.0923359, w: 0.079246305}
+      scale: {x: 1.0000001, y: 1.0000004, z: 1}
+    - name: LegIKR_end
+      parentName: LegIKR
+      position: {x: 0.00000014062971, y: 0.25869972, z: -0.0000000028958311}
+      rotation: {x: -0.000000011347301, y: 0.008071123, z: -0.0000000014155455, w: 0.99996746}
+      scale: {x: 1, y: 1, z: 0.99999994}
+    - name: char7.140
+      parentName: Jocker_Additional_Animation(Clone)
+      position: {x: -0, y: -1.8853883, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+    - name: char7.214
+      parentName: Jocker_Additional_Animation(Clone)
+      position: {x: -0, y: -1.8853883, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+    - name: char7.349
+      parentName: Jocker_Additional_Animation(Clone)
+      position: {x: -0, y: -1.8853883, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+    - name: char7.121
+      parentName: Jocker_Additional_Animation(Clone)
+      position: {x: -0, y: -1.8853883, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+    - name: char7.143
+      parentName: Jocker_Additional_Animation(Clone)
+      position: {x: -0, y: -1.8853883, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+    - name: char7.248
+      parentName: Jocker_Additional_Animation(Clone)
+      position: {x: -0, y: -1.8853883, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+    - name: char7.036
+      parentName: Jocker_Additional_Animation(Clone)
+      position: {x: -0, y: -1.8853883, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+    - name: char7.150
+      parentName: Jocker_Additional_Animation(Clone)
+      position: {x: -0, y: -1.8853883, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+    - name: char7.319
+      parentName: Jocker_Additional_Animation(Clone)
+      position: {x: -0, y: -1.8853883, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+    - name: char7.052
+      parentName: Jocker_Additional_Animation(Clone)
+      position: {x: -0, y: -1.8853883, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+    - name: char7.156
+      parentName: Jocker_Additional_Animation(Clone)
+      position: {x: -0, y: -1.8853883, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+    - name: char7.329
+      parentName: Jocker_Additional_Animation(Clone)
+      position: {x: -0, y: -1.8853883, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
     armTwist: 0.5
     foreArmTwist: 0.5
     upperLegTwist: 0.5

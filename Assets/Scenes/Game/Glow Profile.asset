@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-1699166633202371751
+--- !u!114 &-6316066680917982081
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
@@ -18,10 +18,10 @@ MonoBehaviour:
     m_Value: 1
   threshold:
     m_OverrideState: 1
-    m_Value: 1.87
+    m_Value: 1.11
   intensity:
     m_OverrideState: 1
-    m_Value: 2.87
+    m_Value: 0.42
   scatter:
     m_OverrideState: 0
     m_Value: 0.7
@@ -60,4 +60,4 @@ MonoBehaviour:
   m_Name: Glow Profile
   m_EditorClassIdentifier: 
   components:
-  - {fileID: -1699166633202371751}
+  - {fileID: -6316066680917982081}

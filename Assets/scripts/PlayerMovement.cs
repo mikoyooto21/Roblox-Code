@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine.UIElements;
 using Unity.VisualScripting;
 using YG;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -88,9 +89,24 @@ public class PlayerMovement : MonoBehaviour
     public bool walking = false;
     int skinId = 1;
 
+    float playerPosX;
+    float playerPosY;
+    float playerPosZ;
 
     private void Start()
     {
+        if (PlayerPrefs.HasKey("PlayerPosX") && PlayerPrefs.HasKey("PlayerPosY") && PlayerPrefs.HasKey("PlayerPosZ"))
+        {
+            playerPosX = PlayerPrefs.GetFloat("PlayerPosX");
+            playerPosY = PlayerPrefs.GetFloat("PlayerPosY");
+            playerPosZ = PlayerPrefs.GetFloat("PlayerPosZ");
+
+            Vector3 playerPosition = new Vector3(playerPosX, playerPosY, playerPosZ);
+            transform.position = playerPosition;
+            Debug.Log("Ui_InGame script " + transform.position);
+        }
+
+        Debug.Log("PM Start script " + transform.position);
         inGame = FindObjectOfType<UI_InGame>();
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
@@ -186,6 +202,8 @@ public class PlayerMovement : MonoBehaviour
             verticalInput = joystick.Vertical;
         }
 
+
+
         MovePlayer();
         StateHandler();
     }
@@ -249,7 +267,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // Mode - Walking
-        else if (grounded && Input.anyKey)
+        else if (grounded && (Mathf.Abs(horizontalInput) > 0.1f || Mathf.Abs(verticalInput) > 0.1f))
         {
             animator.SetBool("Idle", false);
             animator.SetBool("Walk", true);
@@ -260,7 +278,7 @@ public class PlayerMovement : MonoBehaviour
             moveSpeed = walkSpeed;
         }
 
-        else if (grounded && !Input.anyKey)
+        else if (grounded)
         {
             animator.SetBool("Idle", true);
             animator.SetBool("Walk", false);
@@ -306,11 +324,14 @@ public class PlayerMovement : MonoBehaviour
         // in air
         else if (!grounded && state == MovementState.air)
         {
-            rb.AddForce(moveDirection.normalized * moveSpeed / 2f * 10f * airMultiplier, ForceMode.Force);
-        }
+            if (moveDirection.x != 0 && moveDirection.z != 0)
+                rb.AddForce(moveDirection.normalized * moveSpeed * 10f * airMultiplier, ForceMode.Force);
+            else
+                rb.velocity = new Vector3(0, rb.velocity.y, 0);
 
-        // turn gravity off while on slope
-        rb.useGravity = !OnSlope();
+            // turn gravity off while on slope
+            rb.useGravity = !OnSlope();
+        }
     }
 
 
@@ -399,6 +420,17 @@ public class PlayerMovement : MonoBehaviour
         if (collider.CompareTag("Checkpoint"))
         {
             vectorPoint = collider.transform.position;
+            if (SceneManager.GetActiveScene().buildIndex == 1)
+            {
+                YandexGame.savesData.PlayerPosX = vectorPoint.x;
+                YandexGame.savesData.PlayerPosY = vectorPoint.y;
+                YandexGame.savesData.PlayerPosZ = vectorPoint.z;
+                PlayerPrefs.SetFloat("PlayerPosX", vectorPoint.x);
+                PlayerPrefs.SetFloat("PlayerPosY", vectorPoint.y);
+                PlayerPrefs.SetFloat("PlayerPosZ", vectorPoint.z);
+                PlayerPrefs.Save();
+                YandexGame.SaveProgress();
+            }
             checkpointsList.Remove(collider.gameObject);
             passedLvls = checkpointsList.Count;
             Debug.Log(passedLvls);
