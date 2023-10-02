@@ -130,7 +130,7 @@ public class PlayerMovement : MonoBehaviour
         SetSkin();
 
         transform.GetChild(4).localScale += new Vector3(0.2f, 0.2f, 0.2f);
-        transform.GetChild(4).position += new Vector3(0f, 0.7f, 0f);
+        //transform.GetChild(4).position += new Vector3(0f, 0.7f, 0f);
     }
 
 
@@ -183,6 +183,7 @@ public class PlayerMovement : MonoBehaviour
                 transform.GetChild(0).gameObject.SetActive(false);
 
                 Animator modelAnimator = Instantiate(skinConfig.Skins[i].SkinModelPrefab, transform);
+                modelAnimator.transform.localPosition = Vector3.zero;
                 animator = modelAnimator;
                 break;
             }
@@ -292,7 +293,7 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             animator.SetBool("Air", true);
-            animator.SetBool("Walk", false);
+            //animator.SetBool("Walk", false);
             state = MovementState.air;
             rb.AddForce(transform.up * -airDrag, ForceMode.Impulse);
             startTimeInAir += Time.deltaTime;

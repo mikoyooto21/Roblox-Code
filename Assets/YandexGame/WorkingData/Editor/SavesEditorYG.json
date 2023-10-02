@@ -1,5 +1,5 @@
 {
-    "idSave": 6255,
+    "idSave": 6540,
     "isFirstSession": false,
     "language": "ru",
     "promptDone": false,
@@ -11,9 +11,9 @@
         false
     ],
     "isExited": 1,
-    "PlayerPosX": -82.28639221191406,
-    "PlayerPosY": 2.3935775756835939,
-    "PlayerPosZ": -25.08932876586914,
+    "PlayerPosX": 110.06429290771485,
+    "PlayerPosY": 34.16526794433594,
+    "PlayerPosZ": 16.404312133789064,
     "CheckpointsTrackerBarScaleX": 0.0,
     "time": 0,
     "isBuyed": [
