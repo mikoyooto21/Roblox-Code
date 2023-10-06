@@ -3,7 +3,7 @@ using UnityEngine.EventSystems;
 
 namespace MyJoystick
 {
-    public class Joystick : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerDownHandler
+    public class Joystick : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerDownHandler, IPointerUpHandler
     {
         private bool _isDragging;
         private Vector2 _startPoint;
@@ -29,7 +29,7 @@ namespace MyJoystick
             if (!_isDragging)
                 return;
 
-            Drag(eventData.position);
+            UpdateDrag(eventData.position);
         }
 
         public void OnEndDrag(PointerEventData eventData)
@@ -48,16 +48,21 @@ namespace MyJoystick
                 _startPoint = _rectTransform.position;
                 _isDragging = true;
 
-                Drag(eventData.position);
+                UpdateDrag(eventData.position);
             }
         }
 
-        private void Drag(Vector2 position)
+        public void OnPointerUp(PointerEventData eventData)
+        {
+            EndDrag();
+        }
+
+        private void UpdateDrag(Vector2 position)
         {
             _endPoint = position;
             _direction = -(_startPoint - _endPoint).normalized;
             _distance = Vector2.Distance(_startPoint, _endPoint);
-            _distance = (_distance > _maxDistance) ? _maxDistance : _distance;
+            _distance = Mathf.Min(_distance, _maxDistance);
 
             _handleRectTransform.localPosition = _direction * _distance;
         }
@@ -70,4 +75,3 @@ namespace MyJoystick
         }
     }
 }
-
