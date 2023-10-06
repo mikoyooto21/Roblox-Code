@@ -158,7 +158,7 @@ public class UI_InGame : Coins
 
     public void CheckpointsTracker()
     {
-        if (lastLvl == PlayerMovement.passedLvls)
+        if (lastLvl == PlayerMovement.PassedLvls)
         {
 
             newSize = rectTransform.sizeDelta;
