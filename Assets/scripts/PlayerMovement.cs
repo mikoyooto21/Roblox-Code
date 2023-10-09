@@ -163,6 +163,11 @@ public class PlayerMovement : MonoBehaviour
 
     private void JumpAndGravity()
     {
+        if (_verticalVelocity <= -4 || _verticalVelocity >= 4)
+            _animator.SetBool("Air", true);
+        else
+            _animator.SetBool("Air", false);
+
         if (_playerGroundCheck.IsGround)
         {
             _fallTimeoutDelta = _fallTimeout;
@@ -715,7 +720,7 @@ public class PlayerMovement : MonoBehaviour
         animator.SetTrigger("Jump");
 
         exitingSlope = true;
-        rb.velocity = new Vector3(moveDirection.normalized.x * 6, 0f, moveDirection.normalized.z * 6); // Скинути вертикальну компоненту швидкості
+        rb.velocity = new Vector3(moveDirection.normalized.x * 6, 0f, moveDirection.normalized.z * 6); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 
         rb.AddForce(transform.up * jumpForce, ForceMode.Force);
         startTimeInAir = 0;

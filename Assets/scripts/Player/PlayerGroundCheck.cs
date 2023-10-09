@@ -32,7 +32,7 @@ public class PlayerGroundCheck : MonoBehaviour
         _isGround = Physics.CheckSphere(spherePosition, _groundedRadius, _groundLayers, QueryTriggerInteraction.Ignore);
 
         if (_animator != null)
-            _animator.SetBool("Air", !_isGround);
+            _animator.SetBool("Ground", _isGround);
     }
 
     private void OnDrawGizmosSelected()
