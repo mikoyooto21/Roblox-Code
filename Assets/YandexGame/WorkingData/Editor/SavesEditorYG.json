@@ -1,27 +1,27 @@
 {
-    "idSave": 7026,
-    "isFirstSession": false,
-    "language": "ru",
-    "promptDone": false,
-    "money": 0,
-    "newPlayerName": "Hello!",
-    "openLevels": [
-        false,
-        true,
-        false
-    ],
-    "isExited": 0,
-    "PlayerPosX": 8.492265701293946,
-    "PlayerPosY": 3.98468017578125,
-    "PlayerPosZ": 134.8641815185547,
-    "CheckpointsTrackerBarScaleX": 0.0,
-    "time": 0,
-    "isBuyed": [
-        2,
-        2,
-        3,
-        3,
-        1,
-        1
-    ]
+  "idSave": 7032,
+  "isFirstSession": false,
+  "language": "ru",
+  "promptDone": false,
+  "money": 0,
+  "newPlayerName": "Hello!",
+  "openLevels": [
+    false,
+    true,
+    false
+  ],
+  "isExited": 0,
+  "PlayerPosX": 103.366318,
+  "PlayerPosY": 3.64524078,
+  "PlayerPosZ": 66.3630753,
+  "CheckpointsTrackerBarScaleX": 0.0,
+  "time": 0,
+  "isBuyed": [
+    2,
+    2,
+    3,
+    3,
+    1,
+    1
+  ]
 }
