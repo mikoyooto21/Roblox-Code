@@ -26,8 +26,8 @@ public class CharRotation : MonoBehaviour
         orientation.forward = viewDir.normalized;
 
         // Зчитайте введення користувача для руху
-        float horizontalInput = joystick.Horizontal;
-        float verticalInput = joystick.Vertical;
+        float horizontalInput = joystick.Direction.x;
+        float verticalInput = joystick.Direction.y;
 
 
         Vector3 inputDir = orientation.forward * verticalInput + orientation.right * horizontalInput;
