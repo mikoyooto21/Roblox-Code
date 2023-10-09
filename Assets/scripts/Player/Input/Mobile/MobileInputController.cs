@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class MobileInputController : MonoBehaviour
 {
-    [SerializeField] private MyJoystick.Joystick _joystick;
+    [SerializeField] private Joystick _joystick;
     [SerializeField] private MobileInputLook _mobileInputLook;
 
     private PlayerInputs _playerInputs;
