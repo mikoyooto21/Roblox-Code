@@ -133,7 +133,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void CheckForLegitimacy()
     {
-        // игрок не может находиться в воздухе больше 3 сек.
         if (_playerGroundCheck.IsGround)
             _airTimeoutDelta = 0;
         else
@@ -145,7 +144,6 @@ public class PlayerMovement : MonoBehaviour
             _airTimeoutDelta = 0;
         }
 
-        // игрок не может быть ниже чем чекпоинт - _dead
         if (transform.position.y < _vectorPoint.y - _dead && !_playerGroundCheck.IsGround)
         {
             Dead();
