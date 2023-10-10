@@ -11,9 +11,9 @@ public class UI_InGame : Coins
 {
 
     // ������������� �� ������� GetDataEvent � OnEnable
-    private void OnEnable() => YandexGame.GetDataEvent += LoadData;
+    // private void OnEnable() => YandexGame.GetDataEvent += LoadData;
 
-    private void OnDisable() => YandexGame.GetDataEvent -= LoadData;
+    // private void OnDisable() => YandexGame.GetDataEvent -= LoadData;
 
 
     public float simpleTimer = 0f;
@@ -68,15 +68,15 @@ public class UI_InGame : Coins
         //     }
         // }
 
-        if (YandexGame.SDKEnabled == true)
-        {
-            // ���� ����������, �� ��������� ��� ����� ��� ��������
-            if (YandexGame.savesData.isExited == 1)
-                LoadData();
+        // if (YandexGame.SDKEnabled == true)
+        // {
+        //     // ���� ����������, �� ��������� ��� ����� ��� ��������
+        //     if (YandexGame.savesData.isExited == 1)
+        //         LoadData();
 
-            // ���� ������ ��� �� �����������, �� ����� �� ���������� � ������ Start,
-            // �� �� ���������� ��� ������ ������� GetDataEvent, ����� ��������� �������
-        }
+        //     // ���� ������ ��� �� �����������, �� ����� �� ���������� � ������ Start,
+        //     // �� �� ���������� ��� ������ ������� GetDataEvent, ����� ��������� �������
+        // }
         Debug.Log("IsExit " + PlayerPrefs.GetInt("PlayerExited"));
 
         MobileMenuButtonMaker();
@@ -252,28 +252,28 @@ public class UI_InGame : Coins
         YandexGame.SaveProgress();
     }
 
-    public void LoadData()
-    {
-        coinText.text = YandexGame.savesData.money.ToString();
-        if (YandexGame.savesData.isExited == 1)
-        {
-            playerPosX = YandexGame.savesData.PlayerPosX;
-            playerPosY = YandexGame.savesData.PlayerPosY;
-            playerPosZ = YandexGame.savesData.PlayerPosZ;
+    // public void LoadData()
+    // {
+    //     coinText.text = YandexGame.savesData.money.ToString();
+    //     if (YandexGame.savesData.isExited == 1)
+    //     {
+    //         playerPosX = YandexGame.savesData.PlayerPosX;
+    //         playerPosY = YandexGame.savesData.PlayerPosY;
+    //         playerPosZ = YandexGame.savesData.PlayerPosZ;
 
-            Vector3 playerPosition = new Vector3(playerPosX, playerPosY, playerPosZ);
-            player.transform.position = playerPosition;
-            coinsCollected = YandexGame.savesData.money;
-            if (!switched)
-            {
-                newSize.x = YandexGame.savesData.CheckpointsTrackerBarScaleX;
-                switched = true;
+    //         Vector3 playerPosition = new Vector3(playerPosX, playerPosY, playerPosZ);
+    //         player.transform.position = playerPosition;
+    //         coinsCollected = YandexGame.savesData.money;
+    //         if (!switched)
+    //         {
+    //             newSize.x = YandexGame.savesData.CheckpointsTrackerBarScaleX;
+    //             switched = true;
 
-                // ������ ����� checkpointsTrackerBar
-                rectTransform.sizeDelta += newSize;
-            }
-        }
-    }
+    //             // ������ ����� checkpointsTrackerBar
+    //             rectTransform.sizeDelta += newSize;
+    //         }
+    //     }
+    // }
 
     public void RemoveDetails()
     {

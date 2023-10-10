@@ -7,11 +7,16 @@ public class NewOrCont : MonoBehaviour
 {
     [SerializeField] GameObject newButton;
     [SerializeField] GameObject continueButton;
+    private void OnEnable() => YandexGame.GetDataEvent += SwithButton;
+
+    private void OnDisable() => YandexGame.GetDataEvent -= SwithButton;
 
 
     // Start is called before the first frame update
-    void Start()
+    void SwithButton()
     {
+        Debug.Log(PlayerPrefs.GetInt("PlayerExited"));
+        Debug.Log(YandexGame.savesData.isExited);
         if(YandexGame.savesData.isExited == 1 || PlayerPrefs.GetInt("PlayerExited") == 1)
         {
             newButton.SetActive(false);
