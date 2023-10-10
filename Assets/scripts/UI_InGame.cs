@@ -10,7 +10,7 @@ using System;
 public class UI_InGame : Coins
 {
 
-    // Подписываемся на событие GetDataEvent в OnEnable
+    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ GetDataEvent пїЅ OnEnable
     private void OnEnable() => YandexGame.GetDataEvent += LoadData;
 
     private void OnDisable() => YandexGame.GetDataEvent -= LoadData;
@@ -51,31 +51,31 @@ public class UI_InGame : Coins
     {
         rectTransform = checkpointsTrackerBar.rectTransform;
 
-        if (PlayerPrefs.HasKey("PlayerExited"))
-        {
-            if (PlayerPrefs.GetInt("PlayerExited") == 1)
-            {
-                if (PlayerPrefs.HasKey("PlayerPosX") && PlayerPrefs.HasKey("PlayerPosY") && PlayerPrefs.HasKey("PlayerPosZ"))
-                {
-                    playerPosX = PlayerPrefs.GetFloat("PlayerPosX");
-                    playerPosY = PlayerPrefs.GetFloat("PlayerPosY");
-                    playerPosZ = PlayerPrefs.GetFloat("PlayerPosZ");
+        // if (PlayerPrefs.HasKey("PlayerExited"))
+        // {
+        //     if (PlayerPrefs.GetInt("PlayerExited") == 1)
+        //     {
+        //         if (PlayerPrefs.HasKey("PlayerPosX") && PlayerPrefs.HasKey("PlayerPosY") && PlayerPrefs.HasKey("PlayerPosZ"))
+        //         {
+        //             playerPosX = PlayerPrefs.GetFloat("PlayerPosX");
+        //             playerPosY = PlayerPrefs.GetFloat("PlayerPosY");
+        //             playerPosZ = PlayerPrefs.GetFloat("PlayerPosZ");
 
-                    Vector3 playerPosition = new Vector3(playerPosX, playerPosY, playerPosZ);
-                    player.transform.position = playerPosition;
-                    Debug.Log("Ui_InGame script " + player.transform.position);
-                }
-            }
-        }
+        //             Vector3 playerPosition = new Vector3(playerPosX, playerPosY, playerPosZ);
+        //             player.transform.position = playerPosition;
+        //             Debug.Log("Ui_InGame script " + player.transform.position);
+        //         }
+        //     }
+        // }
 
         if (YandexGame.SDKEnabled == true)
         {
-            // Если запустился, то выполняем Ваш метод для загрузки
+            // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
             if (YandexGame.savesData.isExited == 1)
                 LoadData();
 
-            // Если плагин еще не прогрузился, то метод не выполнится в методе Start,
-            // но он запустится при вызове события GetDataEvent, после прогрузки плагина
+            // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ Start,
+            // пїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ GetDataEvent, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         }
         Debug.Log("IsExit " + PlayerPrefs.GetInt("PlayerExited"));
 
@@ -134,7 +134,7 @@ public class UI_InGame : Coins
                     newSize.x = PlayerPrefs.GetFloat("CheckpointsTrackerBarScaleX");
                     switched = true;
 
-                    // Оновіть розмір checkpointsTrackerBar
+                    // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ checkpointsTrackerBar
                     rectTransform.sizeDelta += newSize;
                 }
             }
@@ -210,7 +210,7 @@ public class UI_InGame : Coins
         Cursor.visible = true;
         if (SceneManager.GetActiveScene().buildIndex == 1)
         {
-            PlayerPrefs.SetInt("UnlockedLevelWithTimer", 1); // 1 - рівень розблоковано
+            PlayerPrefs.SetInt("UnlockedLevelWithTimer", 1); // 1 - пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         }
         YandexGame.savesData.isExited = 0;
         YandexGame.SaveProgress();
@@ -269,7 +269,7 @@ public class UI_InGame : Coins
                 newSize.x = YandexGame.savesData.CheckpointsTrackerBarScaleX;
                 switched = true;
 
-                // Оновіть розмір checkpointsTrackerBar
+                // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ checkpointsTrackerBar
                 rectTransform.sizeDelta += newSize;
             }
         }

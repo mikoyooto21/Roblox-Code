@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.060107388, g: 0.2484456, b: 0.66259706, a: 1}
+  m_IndirectSpecularColor: {r: 0.27194324, g: 0.535562, b: 0.83373654, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -60131,7 +60131,8 @@ MonoBehaviour:
   _jumpTimeout: 0.2
   _fallTimeout: 0.15
   _sfx: {fileID: 0}
-  _dead: 0
+  _distanceForReset: 0
+  _timeInAirForReset: 0
 --- !u!4 &1317322243 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6347736337956693367, guid: 5f45153c204c34c4ebe462e6b6dd7a3d, type: 3}
@@ -67390,8 +67391,9 @@ MonoBehaviour:
   _gravity: -15
   _jumpTimeout: 0.01
   _fallTimeout: 0.15
-  _sfx: {fileID: 0}
-  _dead: 10
+  _sfx: {fileID: 1990432644}
+  _distanceForReset: 0
+  _timeInAirForReset: 0
 --- !u!136 &2122847347
 CapsuleCollider:
   m_ObjectHideFlags: 0

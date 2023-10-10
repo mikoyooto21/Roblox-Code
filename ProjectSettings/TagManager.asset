@@ -25,6 +25,7 @@ TagManager:
   - musicOff
   - sfxOn
   - sfxOff
+  - CheckpointFix
   layers:
   - Default
   - TransparentFX

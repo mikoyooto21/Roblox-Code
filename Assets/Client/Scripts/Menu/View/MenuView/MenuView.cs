@@ -29,11 +29,11 @@ public class MenuView : MonoBehaviour
         MenuViewController.Instance.Invoke("LoadGameView", 0.5f);
     }
 
-    public void NewGameTimer()
-    {
-        DisableView();
-        MenuViewController.Instance.Invoke("LoadGameTimerView", 0.5f);
-    }
+    // public void NewGameTimer()
+    // {
+    //     DisableView();
+    //     MenuViewController.Instance.Invoke("LoadGameTimerView", 0.5f);
+    // }
 
     public void EnableShopView()
     {

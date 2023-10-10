@@ -568,7 +568,6 @@ GameObject:
   - component: {fileID: 67994232}
   - component: {fileID: 67994231}
   - component: {fileID: 67994230}
-  - component: {fileID: 67994229}
   m_Layer: 5
   m_Name: conGameBtn
   m_TagString: Untagged
@@ -596,18 +595,6 @@ RectTransform:
   m_AnchoredPosition: {x: -464.6441, y: -3}
   m_SizeDelta: {x: 602, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &67994229
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 67994227}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f6736f32f722a843b50b54de448ec2d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &67994230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1671,7 +1658,6 @@ GameObject:
   - component: {fileID: 238303361}
   - component: {fileID: 238303360}
   - component: {fileID: 238303359}
-  - component: {fileID: 238303358}
   m_Layer: 5
   m_Name: TimerBtn
   m_TagString: Untagged
@@ -1699,18 +1685,6 @@ RectTransform:
   m_AnchoredPosition: {x: 50, y: -3}
   m_SizeDelta: {x: 625, y: 122}
   m_Pivot: {x: 0, y: 0.5}
---- !u!114 &238303358
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 238303356}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f6736f32f722a843b50b54de448ec2d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &238303359
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1754,19 +1728,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 238303360}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 857911533}
-        m_TargetAssemblyTypeName: MenuView, Assembly-CSharp
-        m_MethodName: NewGameTimer
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &238303360
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2867,7 +2829,6 @@ GameObject:
   - component: {fileID: 480202673}
   - component: {fileID: 480202672}
   - component: {fileID: 480202671}
-  - component: {fileID: 480202670}
   m_Layer: 5
   m_Name: TimerLockedBtn
   m_TagString: Untagged
@@ -2896,18 +2857,6 @@ RectTransform:
   m_AnchoredPosition: {x: 294, y: -13.5}
   m_SizeDelta: {x: 602, y: 122}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &480202670
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 480202668}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f6736f32f722a843b50b54de448ec2d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &480202671
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2951,19 +2900,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 480202672}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 857911533}
-        m_TargetAssemblyTypeName: MenuView, Assembly-CSharp
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &480202672
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4590,7 +4527,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &877879553
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4624,7 +4561,6 @@ GameObject:
   - component: {fileID: 921381563}
   - component: {fileID: 921381562}
   - component: {fileID: 921381561}
-  - component: {fileID: 921381560}
   m_Layer: 5
   m_Name: NewGameBtn
   m_TagString: Untagged
@@ -4652,18 +4588,6 @@ RectTransform:
   m_AnchoredPosition: {x: -464.6441, y: -3}
   m_SizeDelta: {x: 602, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &921381560
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 921381558}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f6736f32f722a843b50b54de448ec2d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &921381561
 MonoBehaviour:
   m_ObjectHideFlags: 0

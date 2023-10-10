@@ -28,7 +28,8 @@ public class PlayerMovement : MonoBehaviour
 
     [Space(10)]
     [SerializeField] private MusicManager _sfx;
-    [SerializeField] float _dead;
+    [SerializeField] private float _distanceForReset;
+    [SerializeField] private float _timeInAirForReset;
 
     private int _speedBoostPercentage;
     private int _jumpBoostPercentage;
@@ -69,9 +70,10 @@ public class PlayerMovement : MonoBehaviour
         _playerGroundCheck = GetComponent<PlayerGroundCheck>();
 
         _inGame = FindObjectOfType<UI_InGame>();
-
-        if (PlayerPrefs.HasKey("PlayerPosX") && PlayerPrefs.HasKey("PlayerPosY") && PlayerPrefs.HasKey("PlayerPosZ"))
+        int mapComplete = PlayerPrefs.GetInt("UnlockedLevelWithTimer", 0);
+        if (PlayerPrefs.HasKey("PlayerPosX") && PlayerPrefs.HasKey("PlayerPosY") && PlayerPrefs.HasKey("PlayerPosZ") && mapComplete == 0)
         {
+            PlayerPrefs.SetInt("UnlockedLevelWithTimer", 0);
             Vector3 playerPosition = new Vector3(PlayerPrefs.GetFloat("PlayerPosX"), PlayerPrefs.GetFloat("PlayerPosY"), PlayerPrefs.GetFloat("PlayerPosZ"));
             TeleportToTarget(playerPosition);
         }
@@ -138,13 +140,13 @@ public class PlayerMovement : MonoBehaviour
         else
             _airTimeoutDelta += Time.deltaTime;
 
-        if (_airTimeoutDelta >= 3)
+        if (_airTimeoutDelta >= _timeInAirForReset)
         {
             Dead();
             _airTimeoutDelta = 0;
         }
 
-        if (transform.position.y < _vectorPoint.y - _dead && !_playerGroundCheck.IsGround)
+        if (transform.position.y < _vectorPoint.y - _distanceForReset && !_playerGroundCheck.IsGround)
         {
             Dead();
         }
@@ -298,7 +300,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnTriggerEnter(Collider collider)
     {
-        if (collider.CompareTag("Checkpoint"))
+        if (collider.CompareTag("Checkpoint") || collider.CompareTag("CheckpointFix"))
         {
             _vectorPoint = collider.transform.position;
             if (SceneManager.GetActiveScene().buildIndex == 1)
@@ -306,19 +308,39 @@ public class PlayerMovement : MonoBehaviour
                 YandexGame.savesData.PlayerPosX = _vectorPoint.x;
                 YandexGame.savesData.PlayerPosY = _vectorPoint.y;
                 YandexGame.savesData.PlayerPosZ = _vectorPoint.z;
+                YandexGame.savesData.isExited = 1;
                 PlayerPrefs.SetFloat("PlayerPosX", _vectorPoint.x);
                 PlayerPrefs.SetFloat("PlayerPosY", _vectorPoint.y);
                 PlayerPrefs.SetFloat("PlayerPosZ", _vectorPoint.z);
+                PlayerPrefs.SetInt("PlayerExited", 1);
                 PlayerPrefs.Save();
                 YandexGame.SaveProgress();
             }
             _checkpointsList.Remove(collider.gameObject);
             PassedLvls = _checkpointsList.Count;
+            if (collider.CompareTag("Checkpoint"))
+            {
+                _timeInAirForReset = 3f;
+                _distanceForReset = 10f;
+            }
+            else if (collider.CompareTag("CheckpointFix"))
+            {
+                _timeInAirForReset = 10f;
+                _distanceForReset = 100f;
+            }
             Debug.Log(PassedLvls);
         }
         else if (collider.CompareTag("Complete"))
         {
             _inGame.MapComplete();
+            // YandexGame.savesData.PlayerPosX = 0f;
+            // YandexGame.savesData.PlayerPosY = 0f;
+            // YandexGame.savesData.PlayerPosZ = 0f;
+            // PlayerPrefs.SetFloat("PlayerPosX", 0f);
+            // PlayerPrefs.SetFloat("PlayerPosY", 0f);
+            // PlayerPrefs.SetFloat("PlayerPosZ", 0f);
+            // PlayerPrefs.Save();
+            // YandexGame.SaveProgress();
         }
     }
 
