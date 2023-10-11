@@ -1,9 +1,9 @@
 {
-  "idSave": 5,
+  "idSave": 48,
   "isFirstSession": false,
   "language": "ru",
   "promptDone": false,
-  "money": 1,
+  "money": 5,
   "newPlayerName": "Hello!",
   "openLevels": [
     false,
@@ -11,10 +11,15 @@
     false
   ],
   "isExited": 1,
-  "PlayerPosX": 8.492266,
-  "PlayerPosY": 0.11609365,
-  "PlayerPosZ": 0.459205478,
+  "PlayerPosX": 7.188504,
+  "PlayerPosY": 2.39356232,
+  "PlayerPosZ": -107.704895,
   "CheckpointsTrackerBarScaleX": 0.0,
   "time": 0,
-  "isBuyed": []
+  "isBuyed": [
+    2,
+    2,
+    2,
+    2
+  ]
 }
