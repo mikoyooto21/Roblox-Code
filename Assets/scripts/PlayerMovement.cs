@@ -78,13 +78,13 @@ public class PlayerMovement : MonoBehaviour
         }
 
         _vectorPoint = transform.position;
-        _checkpoints = GameObject.FindGameObjectsWithTag("Checkpoint");
+        /*_checkpoints = GameObject.FindGameObjectsWithTag("Checkpoint");
 
         _checkpointsList.Clear();
         foreach (GameObject chekpointGameObject in _checkpoints)
         {
             _checkpointsList.Add(chekpointGameObject);
-        }
+        }*/
 
 
         if (Application.isMobilePlatform)
@@ -320,8 +320,11 @@ public class PlayerMovement : MonoBehaviour
                 PlayerPrefs.Save();
                 YandexGame.SaveProgress();
             }
-            _checkpointsList.Remove(collider.gameObject);
-            PassedLvls = _checkpointsList.Count;
+            //_checkpointsList.Remove(collider.gameObject);
+            //PassedLvls = _checkpointsList.Count;
+            PassedLvls = MapController.Instance.GetCheckpointIdByGameObject(collider.gameObject);
+            ProgressBarUI.InvokeCheckpointActivatedEvent(PassedLvls);
+
             if (collider.CompareTag("Checkpoint"))
             {
                 _timeInAirForReset = 3f;
