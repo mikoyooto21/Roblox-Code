@@ -3778,7 +3778,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3157483472541429372, guid: caf9732433f4dc044845763962493607, type: 3}
       propertyPath: closingADValues.audioPause
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3157483472541429372, guid: caf9732433f4dc044845763962493607, type: 3}
       propertyPath: closingADValues.cursorVisible
@@ -66737,6 +66737,7 @@ GameObject:
   - component: {fileID: 1990432641}
   - component: {fileID: 1990432644}
   - component: {fileID: 1990432643}
+  - component: {fileID: 1990432645}
   m_Layer: 0
   m_Name: Scripts
   m_TagString: Untagged
@@ -66901,6 +66902,19 @@ MonoBehaviour:
   SFXSource: {fileID: 1990432643}
   bg: {fileID: 8300000, guid: b855a7a52eee0174a9139b672052ee29, type: 3}
   death: {fileID: 8300000, guid: 97a4d5ebb4a0f5747a89181e85b057c9, type: 3}
+--- !u!114 &1990432645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1990432637}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c858057569b512b438a2383bef60d92c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _adTimeout: 100
 --- !u!1 &1995264434 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -4374456098181011198, guid: 5f45153c204c34c4ebe462e6b6dd7a3d, type: 3}
