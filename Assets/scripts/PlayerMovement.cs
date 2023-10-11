@@ -58,9 +58,8 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 _vectorPoint;
     static public GameObject[] _checkpoints;
     static public List<GameObject> _checkpointsList = new List<GameObject>();
-
     private Vector3 _currentVelocity;
-
+    private GameObject _skinPlayer;
     private void Start()
     {
         _transform = transform;
@@ -128,6 +127,7 @@ public class PlayerMovement : MonoBehaviour
                 _animator = modelAnimator;
 
                 _playerGroundCheck.SetAnimator(_animator);
+                _skinPlayer = modelAnimator.gameObject;
                 break;
             }
         }
@@ -280,6 +280,10 @@ public class PlayerMovement : MonoBehaviour
         _transform.position = position;
         _controller.enabled = true;
     }
+    public void SetActiveSkinPlayer(bool activeSkin)
+    {
+        _skinPlayer.SetActive(activeSkin);
+    }
 
     public void OnCollisionEnter(Collision collision)
     {
@@ -343,7 +347,6 @@ public class PlayerMovement : MonoBehaviour
             // YandexGame.SaveProgress();
         }
     }
-
     void Dead()
     {
         TeleportToTarget(_vectorPoint + Vector3.up * 3);
