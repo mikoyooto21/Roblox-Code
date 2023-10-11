@@ -4880,15 +4880,15 @@ RectTransform:
   - {fileID: 1278074215}
   - {fileID: 732614941}
   - {fileID: 326603569}
+  - {fileID: 1836316025}
   - {fileID: 819524287}
   - {fileID: 959170935}
   - {fileID: 1753878008}
+  - {fileID: 1231662730}
   - {fileID: 534219631}
   - {fileID: 1368067644}
   - {fileID: 519696682}
   - {fileID: 363355846}
-  - {fileID: 1231662730}
-  - {fileID: 1836316025}
   m_Father: {fileID: 349593887}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.097154975, y: 0.091473654}
@@ -4916,15 +4916,15 @@ MonoBehaviour:
   - {fileID: 1278074218}
   - {fileID: 732614944}
   - {fileID: 326603572}
+  - {fileID: 1836316026}
   - {fileID: 819524290}
   - {fileID: 959170938}
   - {fileID: 1753878011}
+  - {fileID: 1231662731}
   - {fileID: 534219634}
   - {fileID: 1368067647}
   - {fileID: 519696685}
   - {fileID: 363355847}
-  - {fileID: 1231662731}
-  - {fileID: 1836316026}
   _selectSkinParent: {fileID: 2111260881}
   _buySellWatch: {fileID: 1762226349}
   coinText: {fileID: 32439120}
@@ -6817,7 +6817,7 @@ Camera:
   near clip plane: 0.3
   far clip plane: 200
   field of view: 60
-  orthographic: 1
+  orthographic: 0
   orthographic size: 1
   m_Depth: -1
   m_CullingMask:
@@ -10100,7 +10100,7 @@ Transform:
   m_GameObject: {fileID: 2111260880}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: -0.1, y: 0.13, z: 0}
+  m_LocalPosition: {x: 0.55, y: -0.33, z: -5.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10164,13 +10164,13 @@ MonoBehaviour:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 213729673}
   - {fileID: 1343064574}
   - {fileID: 762665901}
   - {fileID: 2002974261}
-  - {fileID: 43204432}
   - {fileID: 1642917914}
   - {fileID: 1419223914}
   - {fileID: 856017289}
   - {fileID: 2111260881}
   - {fileID: 1404895282}
+  - {fileID: 213729673}
+  - {fileID: 43204432}

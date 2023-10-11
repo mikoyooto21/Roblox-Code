@@ -94,6 +94,7 @@ public class BuySellWatch : ShopButtonsManager
         YandexGame.savesData.isBuyed.Add(_skinData.SkinId);
         YandexGame.SaveProgress();
         HideButton();
+        DisplayOwnButton();
     }
 
     private void UpdateCoinText()
