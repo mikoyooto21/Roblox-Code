@@ -70,10 +70,12 @@ public class PlayerMovement : MonoBehaviour
 
         _inGame = FindObjectOfType<UI_InGame>();
         int mapComplete = PlayerPrefs.GetInt("UnlockedLevelWithTimer", 0);
-        if (PlayerPrefs.HasKey("PlayerPosX") && PlayerPrefs.HasKey("PlayerPosY") && PlayerPrefs.HasKey("PlayerPosZ") && mapComplete == 0)
+        if (PlayerPrefs.HasKey("PlayerPosX") && PlayerPrefs.HasKey("PlayerPosX") && PlayerPrefs.HasKey("PlayerPosZ"))
         {
             PlayerPrefs.SetInt("UnlockedLevelWithTimer", 0);
             Vector3 playerPosition = new Vector3(PlayerPrefs.GetFloat("PlayerPosX"), PlayerPrefs.GetFloat("PlayerPosY"), PlayerPrefs.GetFloat("PlayerPosZ"));
+
+            Debug.Log("----------" + playerPosition);
             TeleportToTarget(playerPosition);
         }
 
@@ -297,7 +299,6 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("hotCube") || collision.gameObject.CompareTag("Spikes"))
         {
-            Debug.Log(5545);
             Dead();
         }
     }
@@ -322,8 +323,14 @@ public class PlayerMovement : MonoBehaviour
             }
             //_checkpointsList.Remove(collider.gameObject);
             //PassedLvls = _checkpointsList.Count;
-            PassedLvls = MapController.Instance.GetCheckpointIdByGameObject(collider.gameObject);
-            ProgressBarUI.InvokeCheckpointActivatedEvent(PassedLvls);
+
+            int checkpointId = MapController.Instance.GetCheckpointIdByGameObject(collider.gameObject);
+
+            if (PassedLvls != checkpointId)
+            {
+                PassedLvls = MapController.Instance.GetCheckpointIdByGameObject(collider.gameObject);
+                ProgressBarUI.InvokeCheckpointActivatedEvent(PassedLvls);
+            }
 
             if (collider.CompareTag("Checkpoint"))
             {

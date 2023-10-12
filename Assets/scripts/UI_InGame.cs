@@ -43,9 +43,14 @@ public class UI_InGame : Coins
 
     bool switched = false;
 
-    int lastLvl = 149;
+    int lastCheckpointId = 0;
 
     public float adTimer = 10f;
+
+    private void OnEnable()
+    {
+        ProgressBarUI.OnCheckpointActivatedEvent.AddListener(OnCheckpointActivatedEvent);
+    }
 
     void Start()
     {
@@ -91,7 +96,7 @@ public class UI_InGame : Coins
         
         
         VideoAdNew();
-        CheckpointsTracker();
+        //CheckpointsTracker();
 
         if (!gamePaused)
         {
@@ -158,14 +163,28 @@ public class UI_InGame : Coins
 
     public void CheckpointsTracker()
     {
-        if (lastLvl == PlayerMovement.PassedLvls)
+        /*if (nextLvl == PlayerMovement.PassedLvls)
         {
-
             newSize = rectTransform.sizeDelta;
             newSize.x += 2.25f;
             rectTransform.sizeDelta = newSize;
             CollectCoin();
-            lastLvl--;
+            nextLvl++;
+        }*/
+    }
+
+    private void OnCheckpointActivatedEvent(int checkpointId)
+    {
+        if (lastCheckpointId == 0)
+            lastCheckpointId = checkpointId;
+
+        if (lastCheckpointId != checkpointId && lastCheckpointId < checkpointId)
+        {
+            newSize = rectTransform.sizeDelta;
+            newSize.x += 2.25f;
+            rectTransform.sizeDelta = newSize;
+            CollectCoin();
+            lastCheckpointId = checkpointId;
         }
     }
 

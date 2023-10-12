@@ -33,8 +33,8 @@ public class Coins : MonoBehaviour
 
     public void CollectCoin()
     {
-        coinsCollected++;
-        startCoins++;
+        coinsCollected += 5;
+        startCoins += 5;
         // Оновіть відображення кількості монеток після кожного збору монетки
         UpdateCoinText();
     }

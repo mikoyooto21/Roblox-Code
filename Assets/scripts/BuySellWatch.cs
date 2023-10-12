@@ -77,6 +77,7 @@ public class BuySellWatch : ShopButtonsManager
             UpdateCoinText();
             SaveCoins();
             HideButton();
+            DisplayOwnButton();
         }
         else
         {
