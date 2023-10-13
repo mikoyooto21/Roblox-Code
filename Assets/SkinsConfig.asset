@@ -14,62 +14,47 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _skins:
   - SkinId: 1
-    _skinImage: {fileID: 1654558750, guid: f89e1bf53c249d549b7ce11e031d07ca, type: 3}
+    _skinImage: {fileID: 21300000, guid: 5f7f60884aade764798164e663092d2a, type: 3}
     SkinModelPrefab: {fileID: 2500499521414385891, guid: 0cf5d4dbee1e4774cb81cd0cfa84c312, type: 3}
     skinPrice: 0
     skinAvailable: 1
   - SkinId: 2
-    _skinImage: {fileID: 274807725, guid: 61f275664a07a8948a95de892f64421c, type: 3}
+    _skinImage: {fileID: 21300000, guid: 2a18eb8c5b6cc8c40999bf086642e3e6, type: 3}
     SkinModelPrefab: {fileID: 4226162271462624580, guid: c4f5314e149a9d14980c103b5647022e, type: 3}
-    skinPrice: 0
-    skinAvailable: 0
+    skinPrice: 50
+    skinAvailable: 1
   - SkinId: 3
-    _skinImage: {fileID: -1865999106, guid: db49cf1a84fc3c441945de3f9ab3474e, type: 3}
+    _skinImage: {fileID: 21300000, guid: 8043757875dd66447aa77120210ddaee, type: 3}
     SkinModelPrefab: {fileID: 8114892140512437087, guid: 58abd1914f18a2740b8642280a6c63e8, type: 3}
-    skinPrice: 0
+    skinPrice: 75
     skinAvailable: 0
   - SkinId: 4
-    _skinImage: {fileID: -646247822, guid: aff0053cca225584aa82d96ea623e5e4, type: 3}
+    _skinImage: {fileID: 21300000, guid: 4011466598d8e494491261491a77bc49, type: 3}
     SkinModelPrefab: {fileID: 116941363132208034, guid: 3f7f6477d1c6ca249976fa78ff17a33c, type: 3}
-    skinPrice: 0
+    skinPrice: 100
     skinAvailable: 0
   - SkinId: 5
-    _skinImage: {fileID: -116669756, guid: 0384106a265e5bf4c9e42c374bd190c1, type: 3}
+    _skinImage: {fileID: 21300000, guid: 569bf4ace2916154684b9c83af3bb31b, type: 3}
     SkinModelPrefab: {fileID: 6414604252062109770, guid: ae87804d132a84e4ab889f729a735f06, type: 3}
-    skinPrice: 0
+    skinPrice: 125
     skinAvailable: 0
   - SkinId: 6
-    _skinImage: {fileID: -2029858910, guid: f99f50fa8a8275542aa1d549e5bb7248, type: 3}
+    _skinImage: {fileID: 21300000, guid: 91fadd2ac625d8b49ae76d9cc17565dd, type: 3}
     SkinModelPrefab: {fileID: 1791130739047710461, guid: 4e45c0495d16ced4bb654f887549b6a9, type: 3}
-    skinPrice: 0
+    skinPrice: 150
     skinAvailable: 0
   - SkinId: 7
-    _skinImage: {fileID: -1970705690, guid: 1a075af12a1fdae41b204e2fe1c6caa5, type: 3}
+    _skinImage: {fileID: 21300000, guid: 024fd8564041ee04d90ce49e8b00725a, type: 3}
     SkinModelPrefab: {fileID: 4886471871179918699, guid: 3a633d6881073784987de717d458d6c8, type: 3}
     skinPrice: 0
     skinAvailable: 0
   - SkinId: 8
-    _skinImage: {fileID: 1358440552, guid: dec089fcec0be4543870693c4608680e, type: 3}
+    _skinImage: {fileID: 21300000, guid: 906d1ced50315cb4fb3585a03762c491, type: 3}
     SkinModelPrefab: {fileID: 9098708273285321490, guid: ce9d6ecdc240297429a5e949c89be1f0, type: 3}
     skinPrice: 0
     skinAvailable: 0
   - SkinId: 9
-    _skinImage: {fileID: -536202685, guid: 0285d78040907ba4bb348618b61349b8, type: 3}
+    _skinImage: {fileID: 21300000, guid: 459a3ba8d605eb9479385809cf5db839, type: 3}
     SkinModelPrefab: {fileID: 8778543118408248014, guid: 117d989248d815c4aaf827ec374a4d1a, type: 3}
-    skinPrice: 0
-    skinAvailable: 0
-  - SkinId: 10
-    _skinImage: {fileID: 1737070677, guid: 9ee4b7c955a5d674e861d0a7c37e39a3, type: 3}
-    SkinModelPrefab: {fileID: 2938155377683637912, guid: 9c5c8a16a3c3c304c8982215ed92c6bf, type: 3}
-    skinPrice: 0
-    skinAvailable: 0
-  - SkinId: 11
-    _skinImage: {fileID: -1450713568, guid: a05b428f80f8bc548be872731f9556dc, type: 3}
-    SkinModelPrefab: {fileID: 2215956422950428280, guid: 1b1fb4b1813321443b94fe1cc0be1db4, type: 3}
-    skinPrice: 0
-    skinAvailable: 0
-  - SkinId: 12
-    _skinImage: {fileID: 154249499, guid: bb43da6be9f58f64481e377f70b709d3, type: 3}
-    SkinModelPrefab: {fileID: 7407324277389625081, guid: e965dce57ddd1bd4daa5b1d138a79936, type: 3}
     skinPrice: 0
     skinAvailable: 0
