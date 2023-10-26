@@ -70,7 +70,7 @@ public class PlayerMovement : MonoBehaviour
 
         _inGame = FindObjectOfType<UI_InGame>();
         int mapComplete = PlayerPrefs.GetInt("UnlockedLevelWithTimer", 0);
-        if (PlayerPrefs.HasKey("PlayerPosX") && PlayerPrefs.HasKey("PlayerPosX") && PlayerPrefs.HasKey("PlayerPosZ"))
+        if (PlayerPrefs.HasKey("PlayerPosX") && PlayerPrefs.HasKey("PlayerPosY") && PlayerPrefs.HasKey("PlayerPosZ"))
         {
             PlayerPrefs.SetInt("UnlockedLevelWithTimer", 0);
             Vector3 playerPosition = new Vector3(PlayerPrefs.GetFloat("PlayerPosX"), PlayerPrefs.GetFloat("PlayerPosY"), PlayerPrefs.GetFloat("PlayerPosZ"));
@@ -153,10 +153,10 @@ public class PlayerMovement : MonoBehaviour
             Dead();
         }
 
-        if (Input.GetKey(KeyCode.R))
-        {
-            Dead();
-        }
+        // if (Input.GetKey(KeyCode.R))
+        // {
+        //     Dead();
+        // }
     }
 
     public void SetBoost(int speedBoostPercentage, int jumpBoostPercentage)
@@ -347,14 +347,14 @@ public class PlayerMovement : MonoBehaviour
         else if (collider.CompareTag("Complete"))
         {
             _inGame.MapComplete();
-            // YandexGame.savesData.PlayerPosX = 0f;
-            // YandexGame.savesData.PlayerPosY = 0f;
-            // YandexGame.savesData.PlayerPosZ = 0f;
-            // PlayerPrefs.SetFloat("PlayerPosX", 0f);
-            // PlayerPrefs.SetFloat("PlayerPosY", 0f);
-            // PlayerPrefs.SetFloat("PlayerPosZ", 0f);
-            // PlayerPrefs.Save();
-            // YandexGame.SaveProgress();
+            YandexGame.savesData.PlayerPosX = 8f;
+            YandexGame.savesData.PlayerPosY = 0f;
+            YandexGame.savesData.PlayerPosZ = 0f;
+            PlayerPrefs.SetFloat("PlayerPosX", 8f);
+            PlayerPrefs.SetFloat("PlayerPosY", 0f);
+            PlayerPrefs.SetFloat("PlayerPosZ", 0f);
+            PlayerPrefs.Save();
+            YandexGame.SaveProgress();
         }
     }
     void Dead()

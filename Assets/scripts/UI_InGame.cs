@@ -235,11 +235,13 @@ public class UI_InGame : Coins
         YandexGame.SaveProgress();
         PlayerPrefs.SetInt("PlayerExited", 0);
         PlayerPrefs.Save();
+        Time.timeScale = 0f;
         Won.SetActive(true);
     }
 
     public void MenuButton()
     {
+        Time.timeScale = 1f;
         gamePaused = false;
         SaveCoins();
         SaveProgress();

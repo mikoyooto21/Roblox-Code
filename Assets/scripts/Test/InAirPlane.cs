@@ -9,6 +9,12 @@ public class InAirPlane : MonoBehaviour
     [SerializeField] private CapsuleCollider _targetCollider;
     [SerializeField] private GameObject _player;
     [SerializeField] private GameObject _effect;
+    ///////////////////////////////////////////////////////
+    private bool _cheat = false;
+    private string cheatCode = "uio";
+    private string input = "";
+    private float resetDelay = 1f;
+    private float lastInputTime;
 
     private GameObject _currentAirplaneInstance;
     private bool _isActivePlane = false;
@@ -17,11 +23,31 @@ public class InAirPlane : MonoBehaviour
     {
         TpInPlane();
         CheckButtonAirPlane();
+        if (Time.time - lastInputTime > resetDelay)
+        {
+            input = "";
+        }
+
+        foreach (char c in Input.inputString)
+        {
+            input += c;
+            lastInputTime = Time.time;
+
+            if (input == cheatCode)
+            {
+                ActivateCheat();
+            }
+
+            if (input.Length > cheatCode.Length)
+            {
+                input = input.Substring(input.Length - cheatCode.Length);
+            }
+        }
     }
 
     private void CheckButtonAirPlane()
     {
-        if (Input.GetKeyDown(KeyCode.G))
+        if (Input.GetKeyDown(KeyCode.G) && _cheat)
         {
             if (!_isActivePlane)
             {
@@ -65,5 +91,10 @@ public class InAirPlane : MonoBehaviour
     {
         if (_isActivePlane && _currentAirplaneInstance != null)
             _player.transform.position = _currentAirplaneInstance.transform.position;
+    }
+    void ActivateCheat()
+    {
+        Debug.Log("Cheat activated!");
+        _cheat = true;
     }
 }

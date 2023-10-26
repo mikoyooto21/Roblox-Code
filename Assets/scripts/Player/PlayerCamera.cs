@@ -35,7 +35,8 @@ public class PlayerCamera : MonoBehaviour
 
     private void LateUpdate()
     {
-        CameraRotation();
+        if (Time.timeScale != 0f)
+            CameraRotation();
     }
 
     private void CameraRotation()
