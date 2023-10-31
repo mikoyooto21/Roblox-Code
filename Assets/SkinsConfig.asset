@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _skins:
   - SkinId: 1
-    _skinImage: {fileID: 21300000, guid: 5f7f60884aade764798164e663092d2a, type: 3}
-    SkinModelPrefab: {fileID: 2500499521414385891, guid: 0cf5d4dbee1e4774cb81cd0cfa84c312, type: 3}
+    _skinImage: {fileID: 21300000, guid: 4011466598d8e494491261491a77bc49, type: 3}
+    SkinModelPrefab: {fileID: 116941363132208034, guid: 3f7f6477d1c6ca249976fa78ff17a33c, type: 3}
     skinPrice: 0
     skinAvailable: 1
   - SkinId: 2
@@ -29,8 +29,8 @@ MonoBehaviour:
     skinPrice: 75
     skinAvailable: 0
   - SkinId: 4
-    _skinImage: {fileID: 21300000, guid: 4011466598d8e494491261491a77bc49, type: 3}
-    SkinModelPrefab: {fileID: 116941363132208034, guid: 3f7f6477d1c6ca249976fa78ff17a33c, type: 3}
+    _skinImage: {fileID: 21300000, guid: 5f7f60884aade764798164e663092d2a, type: 3}
+    SkinModelPrefab: {fileID: 2500499521414385891, guid: 0cf5d4dbee1e4774cb81cd0cfa84c312, type: 3}
     skinPrice: 100
     skinAvailable: 0
   - SkinId: 5
