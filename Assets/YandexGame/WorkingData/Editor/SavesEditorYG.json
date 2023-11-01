@@ -1,5 +1,5 @@
 {
-  "idSave": 178,
+  "idSave": 286,
   "isFirstSession": false,
   "language": "ru",
   "promptDone": false,
@@ -10,7 +10,7 @@
     true,
     false
   ],
-  "isExited": 1,
+  "isExited": 0,
   "PlayerPosX": 8.492266,
   "PlayerPosY": 0.11609365,
   "PlayerPosZ": 0.459205478,
