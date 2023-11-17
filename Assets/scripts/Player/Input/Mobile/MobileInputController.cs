@@ -7,12 +7,6 @@ public class MobileInputController : MonoBehaviour
 
     private PlayerInputs _playerInputs;
 
-    private void Start()
-    {
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
-    }
-
     private void Update()
     {
         if (_playerInputs == null)
@@ -24,10 +18,13 @@ public class MobileInputController : MonoBehaviour
 
     public void SetPlayerInputs(PlayerInputs playerInputs)
     {
-        _playerInputs = playerInputs;
-        _mobileInputLook.SetPlayerInputs(_playerInputs);
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
 
-        gameObject.SetActive(true);
+        if (playerInputs != null)
+            _playerInputs = playerInputs;
+
+        _mobileInputLook.SetPlayerInputs(_playerInputs);
     }
 
     public void OnClickJumpBtn()

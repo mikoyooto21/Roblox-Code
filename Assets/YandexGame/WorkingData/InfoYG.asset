@@ -315,6 +315,12 @@ MonoBehaviour:
     imageURI: https://justplaygames.ru/public/Paymant3.png
     priceValue: 30
     consumed: 1
+  - id: airplane
+    title: Airplane
+    description: 'Super airplane '
+    imageURI: https://cdn-icons-png.flaticon.com/512/0/614.png
+    priceValue: 30
+    consumed: 0
   metricaEnable: 1
   metricaCounterID: 95250699
   debug: 1

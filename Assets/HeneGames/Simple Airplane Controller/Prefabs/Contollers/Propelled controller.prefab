@@ -94,7 +94,7 @@ TrailRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 501853649413067056}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -239,7 +239,7 @@ TrailRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 501853650137377963}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -551,11 +551,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d236260ee0d659a4383b8680de7ec2ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inputH: 0
+  inputV: 0
+  inputYaw: 0
+  inputTurbo: 0
   airplaneState: 0
   trailThickness: 0.045
-  wingTrailEffects:
-  - {fileID: 501853650137377961}
-  - {fileID: 501853649413067070}
+  wingTrailEffects: []
   yawSpeed: 50
   pitchSpeed: 100
   rollSpeed: 200
@@ -764,6 +766,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6923667051900119556}
     m_Modifications:
+    - target: {fileID: 542458273383587738, guid: b3153dc28bdb00f40aec34c24f96c7ec, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 56bca2d3da109a84eb845885fbc2a95a, type: 2}
     - target: {fileID: 6141148126551206849, guid: b3153dc28bdb00f40aec34c24f96c7ec, type: 3}
       propertyPath: m_Name
       value: Airplane
@@ -812,6 +818,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7971889081454682541, guid: b3153dc28bdb00f40aec34c24f96c7ec, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 56bca2d3da109a84eb845885fbc2a95a, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

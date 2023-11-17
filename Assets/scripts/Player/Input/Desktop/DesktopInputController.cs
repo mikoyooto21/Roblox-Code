@@ -27,6 +27,9 @@ public class DesktopInputController : MonoBehaviour
         else if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
             moveDirection.x = -1;
 
+        if (Input.GetKeyDown(KeyCode.G))
+            PlayerInputsContoller.Instance.OnClickAirplaneBtn();
+
         // to jump
         bool jumpInput = Input.GetKeyDown(KeyCode.Space);
 
@@ -41,10 +44,8 @@ public class DesktopInputController : MonoBehaviour
         HideCursor();
         Invoke("HideCursor", 1);
 
-        // set PlayerInputs and make the object active
-        _playerInputs = playerInputs;
-
-        gameObject.SetActive(true);
+        if (playerInputs != null)
+            _playerInputs = playerInputs;
     }
 
     private void HideCursor()

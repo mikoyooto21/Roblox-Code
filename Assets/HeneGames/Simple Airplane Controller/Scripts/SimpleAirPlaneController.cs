@@ -32,11 +32,10 @@ namespace HeneGames.Airplane
         private Runway currentRunway;
 
         //Input variables
-        private float inputH;
-        private float inputV;
-        private bool inputTurbo;
-        private bool inputYawLeft;
-        private bool inputYawRight;
+        public float inputH;
+        public float inputV;
+        public float inputYaw;
+        public bool inputTurbo;
 
         #endregion
 
@@ -259,15 +258,15 @@ namespace HeneGames.Airplane
             transform.Translate(Vector3.forward * currentSpeed * Time.deltaTime);
 
             //Rotate airplane by inputs
-            transform.Rotate(Vector3.forward * -inputH * currentRollSpeed * Time.deltaTime);
+            transform.Rotate(Vector3.forward * -inputYaw * currentRollSpeed * Time.deltaTime);
             transform.Rotate(Vector3.right * inputV * currentPitchSpeed * Time.deltaTime);
 
             //Rotate yaw
-            if (inputYawRight)
+            if (inputH > 0)
             {
                 transform.Rotate(Vector3.up * currentYawSpeed * Time.deltaTime);
             }
-            else if (inputYawLeft)
+            else if (inputH < 0)
             {
                 transform.Rotate(-Vector3.up * currentYawSpeed * Time.deltaTime);
             }
@@ -652,15 +651,15 @@ namespace HeneGames.Airplane
         private void HandleInputs()
         {
             //Rotate inputs
-            inputH = Input.GetAxis("Horizontal");
+            /*inputH = Input.GetAxis("Horizontal");
             inputV = Input.GetAxis("Vertical");
 
             //Yaw axis inputs
             inputYawLeft = Input.GetKey(KeyCode.Q);
-            inputYawRight = Input.GetKey(KeyCode.E);
+            inputYawRight = Input.GetKey(KeyCode.E);*/
 
             //Turbo
-            inputTurbo = Input.GetKey(KeyCode.LeftShift);
+            //inputTurbo = Input.GetKey(KeyCode.LeftShift);
         }
 
         #endregion

@@ -89,10 +89,7 @@ public class PlayerMovement : MonoBehaviour
         }*/
 
 
-        if (Application.isMobilePlatform)
-            PlayerInputsContoller.Instance.ShowMobileInputController(_playerInputs);
-        else
-            PlayerInputsContoller.Instance.ShowDesktopInputController(_playerInputs);
+        PlayerInputsContoller.Instance.ShowInputController(_playerInputs);
 
         SetSkin();
     }
@@ -299,7 +296,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("hotCube") || collision.gameObject.CompareTag("Spikes"))
         {
-            Dead();
+            //Dead();
         }
     }
 
