@@ -7,7 +7,7 @@ public class Airplane : MonoBehaviour
 {
     public static Airplane Instance { private set; get; }
 
-    [SerializeField] private GameObject _purchaseView;
+    [SerializeField] private PurchaseView _purchaseView;
 
     [Space(10)]
     [SerializeField] private SimpleAirPlaneController _prefabAirPlane;
@@ -50,38 +50,21 @@ public class Airplane : MonoBehaviour
             DioctivateAirplane();
 
         TpInPlane();
-        SetCursorLockMode();
     }
 
     public void OnClickAirplaneBtn()
     {
-        Debug.Log("--------------------------");
-
         if (!_isActivePlane)
             ActivateAirplane();
         else
             DioctivateAirplane();
     }
 
-    private void SetCursorLockMode()
-    {
-        if (_purchaseView.activeInHierarchy)
-        {
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;
-        }
-        else
-        {
-            Cursor.visible = false;
-            Cursor.lockState = CursorLockMode.Locked;
-        }
-    }
-
     public void ActivateAirplane()
     {
         if (!YandexGame.savesData.isAirplanePurchased)
         {
-            _purchaseView.SetActive(true);
+            _purchaseView.EnableView();
             return;
         }
 

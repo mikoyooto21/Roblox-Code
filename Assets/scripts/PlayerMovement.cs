@@ -294,10 +294,14 @@ public class PlayerMovement : MonoBehaviour
         {
             collision.gameObject.SetActive(false);
         }
-        else if (collision.gameObject.CompareTag("hotCube") || collision.gameObject.CompareTag("Spikes"))
+        else if (collision.gameObject.CompareTag("Spikes"))
         {
-            //Dead();
+            Dead();
         }
+        /*else if (collision.gameObject.CompareTag("hotCube") || collision.gameObject.CompareTag("Spikes"))
+        {
+            Dead();
+        }*/
     }
 
     public void OnTriggerEnter(Collider collider)

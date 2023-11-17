@@ -1,5 +1,5 @@
 {
-  "idSave": 68,
+  "idSave": 7,
   "isFirstSession": false,
   "language": "ru",
   "promptDone": false,
@@ -12,9 +12,9 @@
   ],
   "isAirplanePurchased": true,
   "isExited": 1,
-  "PlayerPosX": -247.477081,
-  "PlayerPosY": 93.38406,
-  "PlayerPosZ": -194.8939,
+  "PlayerPosX": -152.462,
+  "PlayerPosY": 94.8670349,
+  "PlayerPosZ": -347.239716,
   "CheckpointsTrackerBarScaleX": 0.0,
   "time": 0,
   "isBuyed": []

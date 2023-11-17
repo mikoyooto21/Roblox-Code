@@ -3,7 +3,7 @@ using YG;
 
 public class ReceivingPurchase : MonoBehaviour
 {
-    [SerializeField] private GameObject _purchaseView;
+    [SerializeField] private PurchaseView _purchaseView;
 
     private void OnEnable()
     {
@@ -22,7 +22,7 @@ public class ReceivingPurchase : MonoBehaviour
         // Ваш код для обработки покупки. Например:
         if (id == "airplane")
         {
-            _purchaseView.SetActive(false);
+            _purchaseView.DisableView();
             YandexGame.savesData.isAirplanePurchased = true;
         }
 

@@ -45,7 +45,7 @@ public class UI_InGame : Coins
 
     int lastCheckpointId = 0;
 
-    public float adTimer = 10f;
+    public float adTimer = 80f;
 
     private void OnEnable()
     {
@@ -102,7 +102,7 @@ public class UI_InGame : Coins
         {
             if (SceneManager.GetActiveScene().buildIndex == 2)
                 simpleTimer += Time.deltaTime;
-            //adTimer -= Time.deltaTime;
+            adTimer -= Time.deltaTime;
         }
 
         DisplayTime();
@@ -305,7 +305,7 @@ public class UI_InGame : Coins
 
     public void VideoAdNew()
     {
-        /*if (adTimer < 1)
+        if (adTimer < 1)
         {
             VideoOpen();
         }
@@ -315,7 +315,7 @@ public class UI_InGame : Coins
             adTimerText.text = string.Format("{0:0}...", adTimer);
         }
         else
-            ad.SetActive(false);*/
+            ad.SetActive(false);
     }
 
     public void VideoOpen()
@@ -324,6 +324,6 @@ public class UI_InGame : Coins
     }
     public void VideoClose()
     {
-        //adTimer = 330;
+        adTimer = 80;
     }
 }
