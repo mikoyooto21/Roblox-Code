@@ -2943,7 +2943,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &534219631
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4586,7 +4586,6 @@ MonoBehaviour:
   - {fileID: 959170938}
   - {fileID: 1753878011}
   - {fileID: 1231662731}
-  - {fileID: 534219634}
   _selectSkinParent: {fileID: 2111260881}
   _buySellWatch: {fileID: 1762226349}
   coinText: {fileID: 32439120}

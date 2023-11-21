@@ -1,9 +1,9 @@
 {
-  "idSave": 7,
+  "idSave": 61,
   "isFirstSession": false,
   "language": "ru",
   "promptDone": false,
-  "money": 1,
+  "money": 0,
   "newPlayerName": "Hello!",
   "openLevels": [
     false,
@@ -12,10 +12,15 @@
   ],
   "isAirplanePurchased": true,
   "isExited": 1,
-  "PlayerPosX": -152.462,
-  "PlayerPosY": 94.8670349,
-  "PlayerPosZ": -347.239716,
+  "PlayerPosX": -424.5871,
+  "PlayerPosY": 112.721527,
+  "PlayerPosZ": -255.618637,
   "CheckpointsTrackerBarScaleX": 0.0,
   "time": 0,
-  "isBuyed": []
+  "isBuyed": [
+    9,
+    8,
+    7,
+    6
+  ]
 }

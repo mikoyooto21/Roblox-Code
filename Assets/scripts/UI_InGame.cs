@@ -26,6 +26,7 @@ public class UI_InGame : Coins
     public GameObject onPauseMenu;
     public GameObject menuButtonPC;
     public GameObject menuButtonMobile;
+    public GameObject continuePlayingView;
     [SerializeField] private GameObject MobileControl;
     [SerializeField] private GameObject Won;
     [SerializeField] private GameObject End;
@@ -46,6 +47,10 @@ public class UI_InGame : Coins
     int lastCheckpointId = 0;
 
     public float adTimer = 80f;
+
+
+    private bool _isShowTimer;
+    private Coroutine _coroutine;
 
     private void OnEnable()
     {
@@ -307,15 +312,52 @@ public class UI_InGame : Coins
     {
         if (adTimer < 1)
         {
-            VideoOpen();
+            /*VideoOpen();*/
         }
-        if (adTimer < 5)
+        if (adTimer < 3)
         {
-            ad.SetActive(true);
-            adTimerText.text = string.Format("{0:0}...", adTimer);
+            if (!_isShowTimer)
+            {
+                if (_coroutine != null)
+                StopCoroutine(_coroutine);
+
+                _coroutine = StartCoroutine(VideoAdNewTest());
+            }
+            /*ad.SetActive(true);
+            adTimerText.text = string.Format("{0:0}...", adTimer);*/
         }
         else
             ad.SetActive(false);
+    }
+
+    IEnumerator VideoAdNewTest()
+    {
+        if (adTimer > 3)
+            yield return null;
+
+        Time.timeScale = 0;
+        _isShowTimer = true;
+
+        Debug.Log("START SHOW AD");
+
+        for (int i = 3; i >= 0; i--)
+        {
+            if (i > 0)
+            {
+                ad.SetActive(true);
+                adTimerText.text = string.Format("{0:0}...", i);
+            }
+            else
+            {
+                VideoOpen();
+            }
+
+            yield return new WaitForSecondsRealtime(1);
+        }
+
+        adTimer = 80;
+        Time.timeScale = 1;
+        _isShowTimer = false;
     }
 
     public void VideoOpen()
@@ -325,5 +367,24 @@ public class UI_InGame : Coins
     public void VideoClose()
     {
         adTimer = 80;
+    }
+    public void VideoError()
+    {
+        adTimer = 80;
+        Time.timeScale = 1;
+        _isShowTimer = false;
+    }
+    public void ShowContinuePlayingView()
+    {
+        Time.timeScale = 0;
+        continuePlayingView.SetActive(true);
+    }
+    public void ContinuePlaying()
+    {
+        adTimer = 80;
+        Time.timeScale = 1;
+        _isShowTimer = false;
+
+        continuePlayingView.SetActive(false);
     }
 }

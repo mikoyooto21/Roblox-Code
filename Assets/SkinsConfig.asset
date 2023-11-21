@@ -29,31 +29,26 @@ MonoBehaviour:
     skinPrice: 75
     skinAvailable: 0
   - SkinId: 4
-    _skinImage: {fileID: 21300000, guid: 5f7f60884aade764798164e663092d2a, type: 3}
-    SkinModelPrefab: {fileID: 2500499521414385891, guid: 0cf5d4dbee1e4774cb81cd0cfa84c312, type: 3}
-    skinPrice: 100
-    skinAvailable: 0
-  - SkinId: 5
     _skinImage: {fileID: 21300000, guid: 569bf4ace2916154684b9c83af3bb31b, type: 3}
     SkinModelPrefab: {fileID: 6414604252062109770, guid: ae87804d132a84e4ab889f729a735f06, type: 3}
     skinPrice: 125
     skinAvailable: 0
-  - SkinId: 6
+  - SkinId: 5
     _skinImage: {fileID: 21300000, guid: 91fadd2ac625d8b49ae76d9cc17565dd, type: 3}
     SkinModelPrefab: {fileID: 1791130739047710461, guid: 4e45c0495d16ced4bb654f887549b6a9, type: 3}
     skinPrice: 150
     skinAvailable: 0
-  - SkinId: 7
+  - SkinId: 6
     _skinImage: {fileID: 21300000, guid: 024fd8564041ee04d90ce49e8b00725a, type: 3}
     SkinModelPrefab: {fileID: 4886471871179918699, guid: 3a633d6881073784987de717d458d6c8, type: 3}
     skinPrice: 0
     skinAvailable: 0
-  - SkinId: 8
+  - SkinId: 7
     _skinImage: {fileID: 21300000, guid: 906d1ced50315cb4fb3585a03762c491, type: 3}
     SkinModelPrefab: {fileID: 9098708273285321490, guid: ce9d6ecdc240297429a5e949c89be1f0, type: 3}
     skinPrice: 0
     skinAvailable: 0
-  - SkinId: 9
+  - SkinId: 8
     _skinImage: {fileID: 21300000, guid: 459a3ba8d605eb9479385809cf5db839, type: 3}
     SkinModelPrefab: {fileID: 8778543118408248014, guid: 117d989248d815c4aaf827ec374a4d1a, type: 3}
     skinPrice: 0

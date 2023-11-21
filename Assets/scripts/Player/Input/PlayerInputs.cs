@@ -16,7 +16,7 @@ public class PlayerInputs : MonoBehaviour
 
     public void SetMove(Vector2 move)
     {
-        if (!CanChange)
+        if (!CanChange || Time.timeScale == 0)
             return;
 
         _move = move;
@@ -29,7 +29,7 @@ public class PlayerInputs : MonoBehaviour
 
     public void SetJump(bool jump)
     {
-        if (!CanChange)
+        if (!CanChange || Time.timeScale == 0)
             return;
 
         _jump = jump;

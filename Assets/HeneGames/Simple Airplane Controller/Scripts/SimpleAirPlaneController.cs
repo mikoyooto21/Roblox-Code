@@ -157,7 +157,7 @@ namespace HeneGames.Airplane
             SetupColliders(crashCollidersRoot);
         }
 
-        private void Update()
+        private void FixedUpdate()
         {
             AudioSystem();
             HandleInputs();
